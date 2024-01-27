@@ -8,13 +8,14 @@
     * this config customizes the [evil_lualine](https://github.com/nvim-lualine/lualine.nvim/blob/master/examples/evil_lualine.lua) theme to scan for CoC-compatible LSPs
 * borderless Telescope with Tokyonight color scheme
 * indentation guides using [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim).
-* pair completion
+* pair completion for `{}`, `[]`, `()`, `<>`, `""`, ````, and `''`.
 * Git delta indicators and diagnostics using [gitsigns.nvim](https://github.com/neoclide/coc.nvim) and [trouble.nvim](https://github.com/folke/trouble.nvim)
     * use `[c` and `]c` to navigate through hunks
     * use `<leader>hp` to preview hunks
     * check out [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) for the other keybinds
 * call Git commands within the editor via [vim-fugitive](https://github.com/tpope/vim-fugitive)
 * trigger code completion using `<Tab>` and `<Enter>`.
+* navigate between splits using `<C-h>`, `<C-j>`, `<C-k>`, and `<C-l>`
 
 ## Preview
 
