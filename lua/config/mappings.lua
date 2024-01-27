@@ -7,6 +7,7 @@ vim.g.mapleader = ","
 map('i', '{', '{}<Esc>ha')
 map('i', '(', '()<Esc>ha')
 map('i', '[', '[]<Esc>ha')
+map('i', '<', '<><Esc>ha')
 map('i', '"', '""<Esc>ha')
 map('i', "'", "''<Esc>ha")
 map('i', "`", "``<Esc>ha")
