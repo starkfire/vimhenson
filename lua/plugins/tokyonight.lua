@@ -1,3 +1,4 @@
+-- modify Telescope theme based on Tokyonight colors
 local tokyonight_color = "#2d3149"
 local bg_dark = "#16161e"
 local text_color = "#131a21"
@@ -43,11 +44,3 @@ local TelescopePrompt = {
 for hl, col in pairs(TelescopePrompt) do
     vim.api.nvim_set_hl(0, hl, col)
 end
-
-return {
-    'folke/tokyonight.nvim',
-    config = function()
-        require('tokyonight').setup()
-        vim.cmd("colorscheme tokyonight-night")
-    end
-}

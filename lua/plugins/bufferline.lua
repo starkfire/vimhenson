@@ -18,12 +18,4 @@ local bufferline_config = {
     }
 }
 
-return {
-    'akinsho/bufferline.nvim',
-    dependencies = {
-        'nvim-tree/nvim-web-devicons'
-    },
-    --[[config = function()
-        require('bufferline').setup(bufferline_config)
-    end]]--
-}
+return bufferline_config

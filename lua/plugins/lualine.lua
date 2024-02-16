@@ -203,11 +203,4 @@ ins_right {
     padding = { left = 1 },
 }
 
-
-return {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function()
-        require("lualine").setup(config)
-    end
-}
+return config

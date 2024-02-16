@@ -11,7 +11,7 @@ function set_color(is_focused)
     return is_focused and bfl_colors.active or bfl_colors.inactive
 end
 
-local options = {
+local cokeline_options = {
     default_hl = {
         fg = function(buffer)
             return buffer.is_focused and bfl_colors.active or bfl_colors.inactive
@@ -78,16 +78,4 @@ local options = {
     },
 }
 
-
-
-return {
-    'willothy/nvim-cokeline',
-    dependencies = {
-        'nvim-lua/plenary.nvim',
-        'nvim-tree/nvim-web-devicons',
-        'stevearc/resession.nvim'
-    },
-    config = function()
-        require('cokeline').setup(options)
-    end
-}
+return cokeline_options

@@ -32,12 +32,3 @@ keyset("n", "K", '<CMD>lua _G.show_docs()<CR>', { silent = true })
 
 -- statusline support
 vim.opt.statusline:prepend("%{coc#status()}%{get(b:,'coc_current_function','')}")
-
-return {
-    'neoclide/coc.nvim',
-    branch = 'master',
-    build = 'npm ci'
-    --config = function()
-    --    require().setup(coc_config)
-    --end
-}
