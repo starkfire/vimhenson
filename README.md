@@ -21,11 +21,9 @@
 ## Preview
 
 ![image](https://github.com/starkfire/vimhenson/assets/26057339/b27d2138-42ee-4cba-afa0-33edbc1fbbb5)
-![image](https://github.com/starkfire/vimhenson/assets/26057339/17cf0fca-b4d0-42ae-b7cc-f8c806b74693)
-![image](https://github.com/starkfire/vimhenson/assets/26057339/a9f61059-d626-4f24-8ceb-daa718b758bd)
-![image](https://github.com/starkfire/vimhenson/assets/26057339/b67e76c5-acd1-4cf5-a79e-2249632aeb39)
-![image](https://github.com/starkfire/vimhenson/assets/26057339/31038cca-3e2e-4c07-baa6-372b8b9d22c6)
-
+![image](https://github.com/starkfire/vimhenson/assets/26057339/45552415-b39a-4b32-b168-d6f973788c9b)
+![image](https://github.com/starkfire/vimhenson/assets/26057339/6ffb202a-5bc3-47ef-ad89-9a92d53368be)
+![image](https://github.com/starkfire/vimhenson/assets/26057339/e1690f25-603d-43ab-a11e-d8a275a7e161)
 
 ## Plugins
 
