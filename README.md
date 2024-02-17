@@ -6,6 +6,7 @@
   * show documentation preview using `<K>`
 * status bar using [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
     * this config customizes the [evil_lualine](https://github.com/nvim-lualine/lualine.nvim/blob/master/examples/evil_lualine.lua) theme to scan for CoC-compatible LSPs
+* [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) for syntax highlighting
 * borderless Telescope with Tokyonight color scheme
 * indentation guides using [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim).
 * pair completion for `{}`, `[]`, `()`, `<>`, `""`, ````, and `''`.
@@ -34,7 +35,7 @@
 * [lazy.nvim](https://github.com/folke/lazy.nvim)
 * [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
 * [mason.nvim](https://github.com/williamboman/mason.nvim)
-* [nvim-treesitter](https://github.com/nvim-lualine/lualine.nvim)
+* [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 * [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 * [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
 * [trouble.nvim](https://github.com/folke/trouble.nvim)
