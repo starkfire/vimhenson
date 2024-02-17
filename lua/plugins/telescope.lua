@@ -1,4 +1,21 @@
-local telescope_config = {
+local M = {}
+
+M.set_mappings = function()
+    local telescope_path = vim.fn.stdpath("data") .. "/lazy/telescope.nvim"
+
+    if vim.loop.fs_stat(telescope_path) then
+        vim.opt.rtp:prepend(telescope_path)
+        
+        local builtin = require('telescope.builtin')
+
+        vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+        vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+        vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+        vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+    end
+end
+
+M.telescope_config = {
     defaults = {
         theme = "center",
         prompt_prefix = "   ",
@@ -18,4 +35,4 @@ local telescope_config = {
     }
 }
 
-return telescope_config
+return M
