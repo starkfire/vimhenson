@@ -18,6 +18,9 @@
 * trigger code completion using `<Tab>` and `<Enter>`.
 * navigate between splits using `<C-h>`, `<C-j>`, `<C-k>`, and `<C-l>`
 
+## External Dependencies
+* [ripgrep](https://github.com/BurntSushi/ripgrep)
+
 ## Preview
 
 ![image](https://github.com/starkfire/vimhenson/assets/26057339/b27d2138-42ee-4cba-afa0-33edbc1fbbb5)
