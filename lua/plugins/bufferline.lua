@@ -7,6 +7,10 @@ if vim.loop.fs_stat(bufferline_path) then
     map('n', "<S-Tab>", ":BufferLineCyclePrev<CR>")
     map('n', "<Tab>", ":BufferLineCycleNext<CR>")
 
+    -- switch tab order
+    map('n', "<Leader>p", ":BufferLineMovePrev<CR>")
+    map('n', "<Leader>n", ":BufferLineMoveNext<CR>")
+
     for i = 1, 9 do
         -- switch between tabs
         map(
@@ -14,8 +18,16 @@ if vim.loop.fs_stat(bufferline_path) then
             ("<Leader>%s"):format(i),
             ("<Cmd>lua require('bufferline').go_to(%s, true)<CR>"):format(i)
         )
-    end
 
+        -- switch tab order
+        map(
+            'n',
+            ("<F%s>"):format(i),
+            ("<Cmd>lua require('bufferline').move_to(%s)<CR>"):format(i)
+        )
+    end
+   
+    -- switch to the last tab
     map('n', "<Leader>$", "<Cmd>lua require('bufferline').go_to(-1, true)<CR>")
 end
 
