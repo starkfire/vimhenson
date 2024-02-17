@@ -92,7 +92,15 @@ local plugins = {
     },
     {
         'nvim-treesitter/nvim-treesitter',
-        build = ':TSUpdate'
+        build = ':TSUpdate',
+        opts = function()
+            return require("plugins.treesitter")
+        end,
+        config = function(_, opts)
+            local configs = require('nvim-treesitter.configs')
+
+            configs.setup(opts)
+        end
     },
     {
         'tpope/vim-fugitive'
