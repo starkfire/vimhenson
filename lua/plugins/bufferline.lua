@@ -1,3 +1,25 @@
+local bufferline_path = vim.fn.stdpath("data") .. "/lazy/nvim-cokeline"
+
+if vim.loop.fs_stat(bufferline_path) then
+    vim.opt.rtp:prepend(bufferline_path)
+
+    -- switch between tabs
+    map('n', "<S-Tab>", ":BufferLineCyclePrev<CR>")
+    map('n', "<Tab>", ":BufferLineCycleNext<CR>")
+
+    for i = 1, 9 do
+        -- switch between tabs
+        map(
+            'n',
+            ("<Leader>%s"):format(i),
+            ("<Cmd>lua require('bufferline').go_to(%s, true)<CR>"):format(i)
+        )
+    end
+
+    map('n', "<Leader>$", "<Cmd>lua require('bufferline').go_to(-1, true)<CR>")
+end
+
+
 local bufferline_config = {
     options = {
         numbers = "ordinal",
