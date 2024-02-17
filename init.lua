@@ -46,7 +46,8 @@ local plugins = {
             require('lualine').setup(opts)
         end
     },
-    --[[{
+    --[[
+    {
         'akinsho/bufferline.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         opts = function()
@@ -55,7 +56,8 @@ local plugins = {
         config = function(_, opts)
             require('bufferline').setup(opts)
         end
-    }]]--,
+    },
+    ]]--
     {
         'willothy/nvim-cokeline',
         dependencies = {
@@ -82,12 +84,11 @@ local plugins = {
         'nvim-telescope/telescope.nvim', tag = '0.1.5',
         dependencies = { 'nvim-lua/plenary.nvim' },
         cmd = 'Telescope',
-        module = 'telescope',
         opts = function()
             return require("plugins.telescope")
         end,
         config = function(_, opts)
-            require('telescope').setup(opts)
+            require('telescope').setup(opts.telescope_config)
         end
     },
     {
