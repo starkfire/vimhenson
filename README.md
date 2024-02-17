@@ -24,6 +24,7 @@
 ![image](https://github.com/starkfire/vimhenson/assets/26057339/45552415-b39a-4b32-b168-d6f973788c9b)
 ![image](https://github.com/starkfire/vimhenson/assets/26057339/6ffb202a-5bc3-47ef-ad89-9a92d53368be)
 ![image](https://github.com/starkfire/vimhenson/assets/26057339/e1690f25-603d-43ab-a11e-d8a275a7e161)
+![image](https://github.com/starkfire/vimhenson/assets/26057339/9ecc194a-2151-4997-b475-ee4ecf2ef8fb)
 
 ## Plugins
 
