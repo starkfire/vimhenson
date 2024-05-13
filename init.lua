@@ -143,6 +143,9 @@ local plugins = {
     },
     {
         'dstein64/vim-startuptime'
+    },
+    {
+        'lbrayner/vim-rzip'
     }
 }
 
