@@ -43,6 +43,19 @@ local cokeline_options = {
         end,
         bg = bfl_colors.background
     },
+    sidebar = {
+        filetype = {'NvimTree', 'neo-tree'},
+        components = {
+            {
+                text = function(buf)
+                    return buf.filetype
+                end,
+                fg = yellow,
+                bg = bfl_colors.background,
+                bold = true,
+            }
+        },
+    },
     components = {
         {
             text = ' ',

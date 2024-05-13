@@ -17,6 +17,7 @@
 * call Git commands within the editor via [vim-fugitive](https://github.com/tpope/vim-fugitive)
 * trigger code completion using `<Tab>` and `<Enter>`.
 * navigate between splits using `<C-h>`, `<C-j>`, `<C-k>`, and `<C-l>`
+* use `<leader>ft` to toggle filetree (nvim-tree).
 
 ## External Dependencies
 * [ripgrep](https://github.com/BurntSushi/ripgrep)
