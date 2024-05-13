@@ -101,7 +101,9 @@ local cokeline_options = {
             end
         },
         {
-            text = 'x',
+            text = function(buffer)
+                return buffer.is_modified and ' ' or ' '
+            end,
             delete_buffer_on_left_click = true,
             fg = "#ffffff",
             bg = function(buffer)
