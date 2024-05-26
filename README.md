@@ -19,8 +19,18 @@
 * navigate between splits using `<C-h>`, `<C-j>`, `<C-k>`, and `<C-l>`
 * use `<leader>ft` to toggle filetree (nvim-tree).
 
-## External Dependencies
+## Dependencies
+
+### Plugin Dependencies
 * [ripgrep](https://github.com/BurntSushi/ripgrep)
+
+### System Dependencies
+* Node.js v18/20+
+    * you will need Node.js to setup CoC
+* gcc / cc / cl / clang / zig
+    * you need a C compiler for treesitter parsers.
+    * for Debian/Ubuntu-based distributions, you can simply run `apt install build-essential`.
+    * for Windows, you can refer to nvim-treesitter's [guide](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support).
 
 ## Preview
 
