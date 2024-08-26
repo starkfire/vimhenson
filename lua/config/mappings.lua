@@ -1,6 +1,4 @@
-local util = require("modules.util")
-local telescope = require("plugins.telescope")
-local tree = require("plugins.nvim-tree")
+require("modules.util")
 
 -- leader key
 vim.g.mapleader = ","
@@ -25,10 +23,3 @@ map('n', "<leader><Up>", ":wincmd k<CR>", { noremap = true, silent = true })
 map('n', "<leader><Down>", ":wincmd j<CR>", { noremap = true, silent = true })
 map('n', "<leader><Left>", ":wincmd h<CR>", { noremap = true, silent = true })
 map('n', "<leader><Right>", ":wincmd l<CR>", { noremap = true, silent = true })
-
--- Telescope
-telescope.set_mappings()
-
--- nvim-tree
-vim.keymap.set('n', "<leader>ft", tree.toggle_tree, { noremap = true, silent = true })
-

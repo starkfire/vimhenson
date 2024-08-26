@@ -1,8 +1,6 @@
-local M = {}
-
-M.toggle_tree = function()
-    local api = require('nvim-tree.api')
-    local view = require('nvim-tree.view')
+local function toggle_tree()
+    local api = require("nvim-tree.api")
+    local view = require("nvim-tree.view")
 
     if view.is_visible() then
         api.tree.close()
@@ -11,4 +9,9 @@ M.toggle_tree = function()
     end
 end
 
-return M
+return {
+    "nvim-tree/nvim-tree.lua",
+    keys = {
+        { "<leader>ft", toggle_tree, { noremap = true, silent = true } }
+    }
+}

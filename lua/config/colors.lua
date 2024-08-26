@@ -8,6 +8,15 @@ local colors = {
         background = "#16161e",
         active = "#d183e8",
         inactive = "#303030"
+    },
+    gruvbox_original_hard = {
+        background = "#1d2021",
+        modified = "#b8bb26",
+        unmodified = "#7c6f64",
+        active_fg = "#ebdbb2",
+        active_bg = "#504945",
+        inactive_fg = "#a89984",
+        inactive_bg = "#1d2021"
     }
 }
 
