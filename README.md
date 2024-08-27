@@ -26,33 +26,38 @@ Previously, I used CoC for LSP support, but its dependency with Node.js under th
 
 * the default `<leader>` key is `,`
 * LSP
-   * `K` for hover
+    * `K` for hover
 * Buffer Switching
-   * navigate between window splits using `<C-h>`, `<C-j>`, `<C-k>`, and `<C-l>`
-      * or `<leader><Up>`, `<leader><Down>`, `<leader><Left>`, and `<leader><Right>` if you like arrowkeys
-   * `<Tab>` and `<S-Tab>` to switch between buffers within the bufferline as if they are tabs
-   * `<leader>p` and `<leader>n` to move buffer orders in bufferline
+    * navigate between window splits using `<C-h>`, `<C-j>`, `<C-k>`, and `<C-l>`
+    * or `<leader><Up>`, `<leader><Down>`, `<leader><Left>`, and `<leader><Right>` if you like arrowkeys
+    * `<Tab>` and `<S-Tab>` to switch between buffers within the bufferline as if they are tabs
+    * `<leader>p` and `<leader>n` to move buffer orders in bufferline
 * Telescope
-   * `<leader>ff` to find files
-   * `<leader>fg` for file grep
-   * `<leader>fb` for buffers
-   * `<leader>fh` for help tags
+    * `<leader>ff` to find files
+    * `<leader>fg` for file grep
+    * `<leader>fb` for buffers
+    * `<leader>fh` for help tags
 * File Tree
-   * `<leader>ft` to toggle file tree
+    * `<leader>ft` to toggle file tree
 * Git
-   * `[c` and `]c` to navigate through hunks
-   * `<leader>hp` to preview hunks
-   * `<leader>hs` to stage hunk
-   * `<leader>hr` to reset hunk
-   * `<leader>tb` to toggle current line blame
-   * `<leader>hd` to view diff
+    * `[c` and `]c` to navigate through hunks
+    * `<leader>hp` to preview hunks
+    * `<leader>hs` to stage hunk
+    * `<leader>hr` to reset hunk
+    * `<leader>tb` to toggle current line blame
+    * `<leader>hd` to view diff
 * Commenting (Normal and Visual Mode)
-   * `<leader>c` to comment out the current line (or selected lines in visual mode)
-   * `<leader>cu` to undo the comment on current line (or selected lines in visual mode)
+    * `<leader>c` to comment out the current line (or selected lines in visual mode)
+    * `<leader>cu` to undo the comment on current line (or selected lines in visual mode)
+    * no plugin is used for commenting, and the comment token will depend on the filetype:
+        * `# ` for Python and Elixir
+        * `-- ` for Lua
+        * `// ` for others (e.g. Rust, Zig, C, C++)
+    * I might consider working on multi-line commenting, especially for docs which can be helpful in Python, JSDoc, and Zig.
 * Wrapping (Visual Mode)
-   * you can select words within a line and wrap them with pairing quotes, brackets, and parentheses.
-   * `<leader>'` to wrap in single-quotes
-   * `<leader>"` to wrap in double-quotes
-   * `<leader>(` to wrap in parentheses
-   * `<leader>{` to wrap in braces
-   * `<leader>[` to wrap in brackets
+    * you can select words within a line and wrap them with pairing quotes, brackets, and parentheses.
+    * `<leader>'` to wrap in single-quotes
+    * `<leader>"` to wrap in double-quotes
+    * `<leader>(` to wrap in parentheses
+    * `<leader>{` to wrap in braces
+    * `<leader>[` to wrap in brackets
