@@ -1,60 +1,58 @@
 # vimhenson
 
+## Motivation
+
+Regardless of the scale of the project I'm working on, I don't want to use VSCode or any other bulky code editor. The terminal is always there and a full-blown Neovim setup is still significantly faster than VSCode with the minimum extensions that I need.
+
+Previously, I used CoC for LSP support, but its dependency with Node.js under the hood led me to issues that are difficult to resolve.
+
 ## Features
 
-* uses [CoC](https://github.com/neoclide/coc.nvim) as LSP client
-  * show documentation preview using `<K>`
-* status bar using [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
-    * this config customizes the [evil_lualine](https://github.com/nvim-lualine/lualine.nvim/blob/master/examples/evil_lualine.lua) theme to scan for CoC-compatible LSPs
-* [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) for syntax highlighting
-* borderless Telescope with Tokyonight color scheme
-* indentation guides using [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim).
-* pair completion for `{}`, `[]`, `()`, `<>`, `""`, ````, and `''`.
-* Git delta indicators and diagnostics using [gitsigns.nvim](https://github.com/neoclide/coc.nvim) and [trouble.nvim](https://github.com/folke/trouble.nvim)
-    * use `[c` and `]c` to navigate through hunks
-    * use `<leader>hp` to preview hunks
-    * check out [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) for the other keybinds
-* call Git commands within the editor via [vim-fugitive](https://github.com/tpope/vim-fugitive)
-* trigger code completion using `<Tab>` and `<Enter>`.
-* navigate between splits using `<C-h>`, `<C-j>`, `<C-k>`, and `<C-l>`
-* use `<leader>ft` to toggle filetree (nvim-tree).
+* [lazy.nvim](https://github.com/folke/lazy.nvim) for plugin management.
+* [mason-lspconfig](https://github.com/williamboman/mason-lspconfig.nvim) and [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) for LSP support.
+* [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) for syntax highlighting.
+* fuzzy finding via [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim).
+* gruvbox theme from [sainnhe/gruvbox-material](https://github.com/sainnhe/gruvbox-material).
+* status bar using [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim).
+    * the existing config is based on [evil_lualine](https://github.com/nvim-lualine/lualine.nvim/blob/master/examples/evil_lualine.lua), modifying it to display the active language server and gruvbox-material's internal color palette.
+* file tree using [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua).
+* indent guides using [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim).
+* Git delta indicators using [gitsigns.nvim](https://github.com/neoclide/coc.nvim).
+* diagnostics with [trouble.nvim](https://github.com/folke/trouble.nvim).
+* run Git commands within the editor via [vim-fugitive](https://github.com/tpope/vim-fugitive).
+* native pair completion, wrapping, and single/multi-line commenting.
 
-## Dependencies
+## Usage Notes
 
-### Plugin Dependencies
-* [ripgrep](https://github.com/BurntSushi/ripgrep)
-
-### System Dependencies
-* Node.js v18/20+
-    * you will need Node.js to setup CoC
-* gcc / cc / cl / clang / zig
-    * you need a C compiler for treesitter parsers.
-    * for Debian/Ubuntu-based distributions, you can simply run `apt install build-essential`.
-    * for Windows, you can refer to nvim-treesitter's [guide](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support).
-
-## Preview
-
-![image](https://github.com/starkfire/vimhenson/assets/26057339/b27d2138-42ee-4cba-afa0-33edbc1fbbb5)
-![image](https://github.com/starkfire/vimhenson/assets/26057339/45552415-b39a-4b32-b168-d6f973788c9b)
-![image](https://github.com/starkfire/vimhenson/assets/26057339/6ffb202a-5bc3-47ef-ad89-9a92d53368be)
-![image](https://github.com/starkfire/vimhenson/assets/26057339/e1690f25-603d-43ab-a11e-d8a275a7e161)
-![image](https://github.com/starkfire/vimhenson/assets/26057339/9ecc194a-2151-4997-b475-ee4ecf2ef8fb)
-
-## Plugins
-
-* [coc.nvim](https://github.com/neoclide/coc.nvim)
-* [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
-* [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
-* [lazy.nvim](https://github.com/folke/lazy.nvim)
-* [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
-* [mason.nvim](https://github.com/williamboman/mason.nvim)
-* [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
-* [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
-* [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
-* [trouble.nvim](https://github.com/folke/trouble.nvim)
-* [vim-fugitive](https://github.com/tpope/vim-fugitive)
-
-## Some Notes
-
-* this config automatically assigns `,` as the `<leader>` key.
-* only CoC-compatible LSPs are guaranteed to seamlessly work in this setup. I'm considering transitions to nvim-lspconfig in the future.
+* the default `<leader>` key is `,`
+* LSP
+   * `K` for hover
+* Buffer Switching
+   * navigate between window splits using `<C-h>`, `<C-j>`, `<C-k>`, and `<C-l>`
+      * or `<leader><Up>`, `<leader><Down>`, `<leader><Left>`, and `<leader><Right>` if you like arrowkeys
+   * `<Tab>` and `<S-Tab>` to switch between buffers within the bufferline as if they are tabs
+   * `<leader>p` and `<leader>n` to move buffer orders in bufferline
+* Telescope
+   * `<leader>ff` to find files
+   * `<leader>fg` for file grep
+   * `<leader>fb` for buffers
+   * `<leader>fh` for help tags
+* File Tree
+   * `<leader>ft` to toggle file tree
+* Git
+   * `[c` and `]c` to navigate through hunks
+   * `<leader>hp` to preview hunks
+   * `<leader>hs` to stage hunk
+   * `<leader>hr` to reset hunk
+   * `<leader>tb` to toggle current line blame
+   * `<leader>hd` to view diff
+* Commenting (Normal and Visual Mode)
+   * `<leader>c` to comment out the current line (or selected lines in visual mode)
+   * `<leader>cu` to undo the comment on current line (or selected lines in visual mode)
+* Wrapping (Visual Mode)
+   * you can select words within a line and wrap them with pairing quotes, brackets, and parentheses.
+   * `<leader>'` to wrap in single-quotes
+   * `<leader>"` to wrap in double-quotes
+   * `<leader>(` to wrap in parentheses
+   * `<leader>{` to wrap in braces
+   * `<leader>[` to wrap in brackets
