@@ -1,5 +1,7 @@
 # vimhenson
 
+![vimhenson-example](https://github.com/user-attachments/assets/45aa0f9c-fef2-4dfa-8feb-8ab7b93574a2)
+
 ## Motivation
 
 Regardless of the scale of the project I'm working on, I don't want to use VSCode or any other bulky code editor. The terminal is always there and a full-blown Neovim setup is still significantly faster than VSCode with the minimum extensions that I need.
