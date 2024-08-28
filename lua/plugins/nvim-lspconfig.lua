@@ -1,18 +1,42 @@
 return {
     "neovim/nvim-lspconfig",
     config = function()
+        local servers = {
+            "lua_ls",
+            "clangd",
+            "pyright",
+            "tsserver",
+            "zls",
+            "elixirls",
+            "volar",
+        }
+
         require("mason").setup()
         require("mason-lspconfig").setup {
-            ensure_installed = {
-                "rust_analyzer",
-                "lua_ls",
-                "pyright",
-                "tsserver",
-                "volar",
-                "prismals",
+            ensure_installed = servers,
+            handlers = {
+                rust_analyzer = function() end
             }
         }
-        
+
+        local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+        local on_attach = function(_, bufnr)
+            local attach_opts = { buffer = bufnr, silent = true }
+
+            vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, attach_opts)
+            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, attach_opts)
+            vim.keymap.set('n', 'K', vim.lsp.buf.hover, attach_opts)
+            vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, attach_opts)
+            vim.keymap.set('n', '<C-s>', vim.lsp.buf.signature_help, attach_opts)
+            vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, attach_opts)
+            vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, attach_opts)
+            vim.keymap.set('n', '<leader>wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, attach_opts)
+            vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, attach_opts)
+            vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, attach_opts)
+            vim.keymap.set('n', 'so', require('telescope.builtin').lsp_references, attach_opts)
+        end
+
         -- Lua
         require'lspconfig'.lua_ls.setup{
             on_init = function(client)
@@ -33,34 +57,49 @@ return {
                     }
                 })
             end,
+            on_attach = on_attach,
+            capabilities = capabilities,
             settings = {
                 Lua = {}
             }
         }
-        
-        -- Rust
-        require'lspconfig'.rust_analyzer.setup{}
 
         -- Python
-        require'lspconfig'.pyright.setup{}
+        require'lspconfig'.pyright.setup{
+            on_attach = on_attach,
+            capabilities = capabilities
+        }
 
-        -- JS/TS
-        require'lspconfig'.tsserver.setup{}
+        -- C / C++ / CUDA / ObjC / ObjCpp / Proto
+        require'lspconfig'.clangd.setup{
+            on_attach = on_attach,
+            capabilities = capabilities
+        }
+
+        -- Zig
+        require'lspconfig'.zls.setup{
+            on_attach = on_attach,
+            capabilities = capabilities
+        }
+
+        -- Elixir
+        require'lspconfig'.elixirls.setup{
+            on_attach = on_attach,
+            capabilities = capabilities
+        }
 
         -- Vue
-        require'lspconfig'.volar.setup{}
+        require'lspconfig'.volar.setup{
+            cmd = { "vue-language-server", "--stdio" },
+            filetypes = { "vue" },
+            on_attach = on_attach,
+            capabilities = capabilities,
+        }
 
-        -- Prisma
-        require'lspconfig'.prismals.setup{}
-
-        -- Hover
-        vim.api.nvim_create_autocmd('LspAttach', {
-            callback = function(args)
-                local client = vim.lsp.get_client_by_id(args.data.client_id)
-                if client.server_capabilities.hoverProvider then
-                    vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = args.buf })
-                end
-            end,
-        })
+        -- JS/TS
+        require'lspconfig'.tsserver.setup{
+            on_attach = on_attach,
+            capabilities = capabilities
+        }
     end
 }
