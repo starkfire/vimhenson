@@ -19,14 +19,12 @@ return {
         opts = {}
     },
     {
-        "hrsh7th/cmp-nvim-lsp",
-    },
-    {
         "hrsh7th/nvim-cmp",
-    },
-    {
-        "L3MON4D3/LuaSnip",
-        version = "v2.*",
+        dependencies = {
+            "hrsh7th/cmp-nvim-lsp",
+            "saadparwaiz1/cmp_luasnip",
+            "L3MON4DE/LuaSnip",
+        },
     },
     {
         "nvim-lualine/lualine.nvim",
@@ -72,5 +70,10 @@ return {
     {
         "lukas-reineke/indent-blankline.nvim",
         main = "ibl",
+    },
+    -- Rust
+    {
+        "mrcjkb/rustaceanvim",
+        version = "^4",
     }
 }
