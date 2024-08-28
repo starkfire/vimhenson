@@ -11,6 +11,9 @@ Previously, I used CoC for LSP support, but its dependency with Node.js under th
 * [lazy.nvim](https://github.com/folke/lazy.nvim) for plugin management.
 * [mason-lspconfig](https://github.com/williamboman/mason-lspconfig.nvim) and [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) for LSP support.
 * [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) for syntax highlighting.
+* pre-configured LSP for Rust, Zig, Elixir, C, C++, JavaScript/TypeScript, and Vue (Volar).
+    * this setup uses [rustaceanvim](https://github.com/mrcjkb/rustaceanvim) for Rust instead of the LSP servers provided by Mason.
+    * if Volar fails to start when opening Vue files, you can check out this [issue](https://github.com/vuejs/language-tools/issues/4706).
 * fuzzy finding via [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim).
 * gruvbox theme from [sainnhe/gruvbox-material](https://github.com/sainnhe/gruvbox-material).
 * status bar using [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim).
@@ -61,3 +64,7 @@ Previously, I used CoC for LSP support, but its dependency with Node.js under th
     * `<leader>(` to wrap in parentheses
     * `<leader>{` to wrap in braces
     * `<leader>[` to wrap in brackets
+
+### Volar
+
+If Volar fails to run whenever Vue files are being opened, you can check out this [issue](https://github.com/vuejs/language-tools/issues/4706).
