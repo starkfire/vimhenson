@@ -1,17 +1,17 @@
 # vimhenson
 
+## Motivation
+
+* I wanted a code editor setup that already comes with almost everything I need, regardless of a project's scale.
+* a full-blown Neovim setup is still faster than VSCode and any other bulky editors.
+* I want to work fast in any environment I am in.
+
 ## Preview
 
 | Environment | Sample |
 | ----------- | ------ |
 | Kitty on Arch + Hyprland | ![vimhenson-kitty-arch](https://github.com/user-attachments/assets/b9d46bd9-3d3b-4ebd-84c5-78f9669966e0) |
 | Windows Terminal (Powershell 7) | ![vimhenson-example](https://github.com/user-attachments/assets/45aa0f9c-fef2-4dfa-8feb-8ab7b93574a2) |
-
-## Motivation
-
-* I wanted a code editor setup that already comes with almost everything I need, regardless of a project's scale.
-* a full-blown Neovim setup is still faster than VSCode.
-* I want to work fast in any environment I am in.
 
 ## Features
 
@@ -37,7 +37,9 @@
 
 ### Future Improvements
 
-Starting [`a71341`](https://github.com/starkfire/vimhenson/commit/a7134101bcd94b0ba4440abf9cdff922ca449592), I can no longer test these configurations on Windows environments and won't be able to address Windows-related issues. This configuration will be primarily tested in Arch and Ubuntu instead. If there are Windows-related issues in the latest versions, please feel free to roll back to the aforementioned commit.
+Starting [v0.1.0](https://github.com/starkfire/vimhenson/releases/tag/v0.1.0), I can no longer test future configuration changes on Windows environments, and I won't be able to address Windows-related issues. Any change will be primarily tested in Arch and Ubuntu instead. 
+
+For a configuration that is fully tested on Windows, please feel free to use [v0.1.0](https://github.com/starkfire/vimhenson/releases/tag/v0.1.0) instead. However, you can always freely use the latest versions if they are not causing issues.
 
 ## Usage
 
