@@ -1,12 +1,17 @@
 # vimhenson
 
-![vimhenson-example](https://github.com/user-attachments/assets/45aa0f9c-fef2-4dfa-8feb-8ab7b93574a2)
+## Preview
+
+| Environment | Sample |
+| ----------- | ------ |
+| Kitty on Arch + Hyprland | ![vimhenson-kitty-arch](https://github.com/user-attachments/assets/b9d46bd9-3d3b-4ebd-84c5-78f9669966e0) |
+| Windows Terminal (Powershell 7) | ![vimhenson-example](https://github.com/user-attachments/assets/45aa0f9c-fef2-4dfa-8feb-8ab7b93574a2) |
 
 ## Motivation
 
-Regardless of the scale of the project I'm working on, I don't want to use VSCode or any other bulky code editor. The terminal is always there and a full-blown Neovim setup is still significantly faster than VSCode with the minimum extensions that I need.
-
-Previously, I used CoC for LSP support, but its dependency with Node.js under the hood led me to issues that are difficult to resolve.
+* I wanted a code editor setup that already comes with almost everything I need, regardless of a project's scale.
+* a full-blown Neovim setup is still faster than VSCode.
+* I want to work fast in any environment I am in.
 
 ## Features
 
@@ -28,7 +33,13 @@ Previously, I used CoC for LSP support, but its dependency with Node.js under th
 * run Git commands within the editor via [vim-fugitive](https://github.com/tpope/vim-fugitive).
 * native pair completion, wrapping, and single/multi-line commenting.
 
-## Usage Notes
+## Notes
+
+### Future Improvements
+
+Starting [`a71341`](https://github.com/starkfire/vimhenson/commit/a7134101bcd94b0ba4440abf9cdff922ca449592), I can no longer test these configurations on Windows environments and won't be able to address Windows-related issues. This configuration will be primarily tested in Arch and Ubuntu instead. If there are Windows-related issues in the latest versions, please feel free to roll back to the aforementioned commit.
+
+## Usage
 
 * the default `<leader>` key is `,`
 * LSP
@@ -67,6 +78,8 @@ Previously, I used CoC for LSP support, but its dependency with Node.js under th
     * `<leader>(` to wrap in parentheses
     * `<leader>{` to wrap in braces
     * `<leader>[` to wrap in brackets
+
+## Troubleshooting
 
 ### Volar
 
