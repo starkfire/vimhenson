@@ -5,7 +5,7 @@ return {
             "lua_ls",
             "clangd",
             "pyright",
-            "tsserver",
+            "ts_ls",
             "zls",
             "elixirls",
             "volar",
@@ -15,8 +15,8 @@ return {
         require("mason-lspconfig").setup {
             ensure_installed = servers,
             handlers = {
-                rust_analyzer = function() end
-            }
+                rust_analyzer = function() end,
+            },
         }
 
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -97,7 +97,7 @@ return {
         }
 
         -- JS/TS
-        require'lspconfig'.tsserver.setup{
+        require'lspconfig'.ts_ls.setup{
             on_attach = on_attach,
             capabilities = capabilities
         }
