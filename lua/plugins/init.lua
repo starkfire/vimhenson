@@ -19,12 +19,18 @@ return {
         opts = {}
     },
     {
+        "L3MON4D3/LuaSnip",
+        version = "v2.*",
+        build = "make install_jsregexp"
+    },
+    {
         "hrsh7th/nvim-cmp",
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
-            "saadparwaiz1/cmp_luasnip",
-            "L3MON4DE/LuaSnip",
         },
+    },
+    {
+        "saadparwaiz1/cmp_luasnip"
     },
     {
         "nvim-lualine/lualine.nvim",
