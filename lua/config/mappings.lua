@@ -3,6 +3,8 @@ require("modules.util")
 local autowrap = require("modules.autowrap")
 local comment = require("modules.comments")
 
+local default_set_opts = { noremap = true, silent = true }
+
 -- leader key
 vim.g.mapleader = ","
 
@@ -28,14 +30,12 @@ map('i', "'", "''<Esc>ha")
 map('i', "`", "``<Esc>ha")
 
 -- pair completion via word selection
-vim.keymap.set('v', '<leader>"', function() autowrap.wrap('"') end, { noremap = true })
-vim.keymap.set('v', "<leader>'", function() autowrap.wrap("'") end, {})
-vim.keymap.set('v', "<leader>(", function() autowrap.wrap_paired("(", ")") end, {})
-vim.keymap.set('v', "<leader>[", function() autowrap.wrap_paired("[", "]") end, {})
-vim.keymap.set('v', "<leader>{", function() autowrap.wrap_paired("{", "}") end, {})
+vim.keymap.set('v', '<leader>"', function() autowrap.wrap('"', '"') end, default_set_opts)
+vim.keymap.set('v', "<leader>'", function() autowrap.wrap("'", "'") end, default_set_opts)
+vim.keymap.set('v', "<leader>(", function() autowrap.wrap("(", ")") end, default_set_opts)
+vim.keymap.set('v', "<leader>[", function() autowrap.wrap("[", "]") end, default_set_opts)
+vim.keymap.set('v', "<leader>{", function() autowrap.wrap("{", "}") end, default_set_opts)
 
 -- commenting
-vim.keymap.set('n', "<leader>c", comment.normal, {})
-vim.keymap.set('n', "<leader>cu", comment.undo_normal, {})
-vim.keymap.set('v', "<leader>c", comment.visual, {})
-vim.keymap.set('v', "<leader>cu", comment.undo_visual, {})
+vim.keymap.set('n', "<leader>cc", comment.attach, default_set_opts)
+vim.keymap.set('v', "<leader>cc", comment.attach, default_set_opts)

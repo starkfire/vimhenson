@@ -21,7 +21,6 @@
 * pre-configured LSP for Lua, Python, Rust, Zig, Elixir, C, C++, JavaScript/TypeScript, and Vue (Volar).
     * this setup uses [rustaceanvim](https://github.com/mrcjkb/rustaceanvim) for Rust instead of the LSP servers provided by Mason.
     * the Python setup uses [pyright](https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/server_configurations/pyright.lua).
-    * if Volar fails to start when opening Vue files, you can check out this [issue](https://github.com/vuejs/language-tools/issues/4706).
 * fuzzy finding via [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim).
 * gruvbox theme from [sainnhe/gruvbox-material](https://github.com/sainnhe/gruvbox-material).
 * status bar using [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim).
@@ -31,21 +30,13 @@
 * Git delta indicators using [gitsigns.nvim](https://github.com/neoclide/coc.nvim).
 * diagnostics with [trouble.nvim](https://github.com/folke/trouble.nvim).
 * run Git commands within the editor via [vim-fugitive](https://github.com/tpope/vim-fugitive).
-* native pair completion, wrapping, and single/multi-line commenting.
-
-## Notes
-
-### Future Improvements
-
-Starting [v0.1.0](https://github.com/starkfire/vimhenson/releases/tag/v0.1.0), I can no longer test future configuration changes on Windows environments, and I won't be able to address Windows-related issues. Any change will be primarily tested in Arch and Ubuntu instead. 
-
-For a configuration that is fully tested on Windows, please feel free to use [v0.1.0](https://github.com/starkfire/vimhenson/releases/tag/v0.1.0) instead. However, you can always freely use the latest versions if they are not causing issues.
+* built-in pair completion, wrapping, and single/multi-line commenting.
 
 ## Usage
 
 * the default `<leader>` key is `,`
 * LSP
-    * `K` for hover
+    * `K` to open hover window/documentation.
 * Buffer Switching
     * navigate between window splits using `<C-h>`, `<C-j>`, `<C-k>`, and `<C-l>`
     * or `<leader><Up>`, `<leader><Down>`, `<leader><Left>`, and `<leader><Right>` if you like arrowkeys
@@ -65,16 +56,22 @@ For a configuration that is fully tested on Windows, please feel free to use [v0
     * `<leader>hr` to reset hunk
     * `<leader>tb` to toggle current line blame
     * `<leader>hd` to view diff
-* Commenting (Normal and Visual Mode)
-    * `<leader>c` to comment out the current line (or selected lines in visual mode)
-    * `<leader>cu` to undo the comment on current line (or selected lines in visual mode)
+* Trouble
+    * `<leader>xx` to toggle diagnostics
+    * `<leader>xX` to toggle buffer diagnostics
+    * `<leader>cs` to toggle document symbols
+    * `<leader>cl` to toggle LSP definitions and references
+    * `<leader>xL` to toggle location list
+    * `<leader>xQ` to toggle quickfix list
+* Commenting
+    * `<leader>cc` to comment/uncomment the current line (in Normal Mode) or selected lines (in Visual Mode).
     * no plugin is used for commenting, and the comment token will depend on the filetype:
         * `# ` for Python and Elixir
         * `-- ` for Lua
-        * `// ` for others (e.g. Rust, Zig, C, C++)
-    * I might consider working on multi-line commenting, especially for docs which can be helpful in Python, JSDoc, and Zig.
-* Wrapping (Visual Mode)
-    * you can select words within a line and wrap them with pairing quotes, brackets, and parentheses.
+        * `// ` for others
+    * in Neovim v0.10, you can already do this out of the box with `gc` on Visual Mode. However, this implementation lets you comment lines on Normal Mode as well.
+* Wrapping
+    * in Visual Mode, you can select words (within a single line or multiple lines) and wrap them between quotes, brackets, or parentheses.
     * `<leader>'` to wrap in single-quotes
     * `<leader>"` to wrap in double-quotes
     * `<leader>(` to wrap in parentheses
