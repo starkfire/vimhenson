@@ -80,6 +80,22 @@
 
 ## Troubleshooting
 
+### Rust
+
+By default, this setup uses [rustaceanvim](https://github.com/mrcjkb/rustaceanvim) for interfacing with `rust-analyzer`.
+
+If `rust_analyzer` is not being detected, you can try to check for the `~/.local/state/nvim/lsp.log` file for the following error:
+
+```
+"error: Unknown binary 'rust-analyzer' in official toolchain 'stable-x86_64-unknown-linux-gnu'.\n"
+```
+
+In this case, if you have already pre-installed Cargo and `rustc`, you need to manually retrieve the standard library sources:
+
+```sh
+rustup component add rust-analyzer
+```
+
 ### Volar
 
 If Volar fails to run whenever Vue files are being opened, you can check out this [issue](https://github.com/vuejs/language-tools/issues/4706).
