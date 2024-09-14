@@ -19,6 +19,8 @@ return {
             },
         }
 
+        local mason_registry = require('mason-registry')
+
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
         local on_attach = function(_, bufnr)
@@ -88,18 +90,37 @@ return {
             capabilities = capabilities
         }
 
+        -- JS/TS + Vue Language Server
+        local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() .. '/node_modules/@vue/language-server'
+
+        require'lspconfig'.ts_ls.setup{
+            on_attach = on_attach,
+            capabilities = capabilities,
+            init_options = {
+                plugins = {
+                    {
+                        name = '@vue/typescript-plugin',
+                        location = vue_language_server_path,
+                        languages = { 'vue' },
+                    },
+                },
+            },
+            filetypes = {
+                "javascript",
+                "typescript",
+                "javascriptreact",
+                "javascript.jsx",
+                "typescriptreact",
+                "typescript.tsx",
+                "vue"
+            },
+        }
+
         -- Vue
         require'lspconfig'.volar.setup{
-            cmd = { "vue-language-server", "--stdio" },
-            filetypes = { "vue" },
             on_attach = on_attach,
             capabilities = capabilities,
         }
 
-        -- JS/TS
-        require'lspconfig'.ts_ls.setup{
-            on_attach = on_attach,
-            capabilities = capabilities
-        }
     end
 }
