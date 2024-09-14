@@ -98,4 +98,18 @@ rustup component add rust-analyzer
 
 ### Volar
 
+By default, this configuration uses Volar's default Hybrid Mode.
+
+To use Volar, you will need to install `@vue/language-server` globally:
+
+```sh
+npm install -g @vue/language-server
+```
+
+You may also need to set up `@vue/typescript-plugin`:
+
+```sh
+npm install -g @vue/typescript-plugin
+```
+
 If Volar fails to run whenever Vue files are being opened, you can check out this [issue](https://github.com/vuejs/language-tools/issues/4706).
