@@ -6,6 +6,7 @@ return {
             "clangd",
             "pyright",
             "ts_ls",
+            "gopls",
             "zls",
             "elixirls",
             "volar",
@@ -74,6 +75,12 @@ return {
 
         -- C / C++ / CUDA / ObjC / ObjCpp / Proto
         require'lspconfig'.clangd.setup{
+            on_attach = on_attach,
+            capabilities = capabilities
+        }
+
+        -- Golang
+        require'lspconfig'.gopls.setup{
             on_attach = on_attach,
             capabilities = capabilities
         }
