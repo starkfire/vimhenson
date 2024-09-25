@@ -10,6 +10,7 @@ return {
             "zls",
             "elixirls",
             "volar",
+            "hls"
         }
 
         require("mason").setup()
@@ -125,6 +126,19 @@ return {
 
         -- Vue
         require'lspconfig'.volar.setup{
+            on_attach = on_attach,
+            capabilities = capabilities,
+        }
+
+        -- Haskell
+        require'lspconfig'.hls.setup{
+            on_attach = on_attach,
+            capabilities = capabilities,
+            filetypes = { "haskell", "lhaskell", "cabal" }
+        }
+
+        -- Gleam
+        require'lspconfig'.gleam.setup{
             on_attach = on_attach,
             capabilities = capabilities,
         }

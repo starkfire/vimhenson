@@ -113,3 +113,11 @@ npm install -g @vue/typescript-plugin
 ```
 
 If Volar fails to run whenever Vue files are being opened, you can check out this [issue](https://github.com/vuejs/language-tools/issues/4706).
+
+### Haskell
+
+To setup autocompletion, the recommended approach is to install GHC, HLS, Cabal, and Stack altogether with [ghcup](https://www.haskell.org/ghcup/).
+
+### Gleam
+
+To work with Gleam, you only need the Treesitter grammar. Mason does not provide language servers for Gleam.
