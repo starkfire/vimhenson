@@ -121,4 +121,8 @@ To setup autocompletion, the recommended approach is to install GHC, HLS, Cabal,
 
 ### Gleam
 
-To work with Gleam, you only need the Treesitter grammar. Mason does not provide language servers for Gleam.
+Mason does not provide language servers for Gleam. To work with Gleam, you will need the Treesitter grammar:
+
+```
+:TSInstall gleam
+```
