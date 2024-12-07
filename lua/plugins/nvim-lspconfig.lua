@@ -10,6 +10,7 @@ return {
             "zls",
             "elixirls",
             "volar",
+            "hls",
             "jsonls"
         }
 
