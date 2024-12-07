@@ -40,6 +40,19 @@ return {
             vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, attach_opts)
             vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, attach_opts)
             vim.keymap.set('n', 'so', require('telescope.builtin').lsp_references, attach_opts)
+
+            -- diagnostics
+            vim.keymap.set('n', '<C-K>', vim.diagnostic.open_float, attach_opts)
+
+            vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+                vim.lsp.diagnostic.on_publish_diagnostics,
+                {
+                    underline = true,
+                    virtual_text = false,
+                    signs = true,
+                    update_in_insert = false
+                }
+            )
         end
 
         -- Lua
