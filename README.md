@@ -18,7 +18,7 @@
 * [lazy.nvim](https://github.com/folke/lazy.nvim) for plugin management.
 * [mason-lspconfig](https://github.com/williamboman/mason-lspconfig.nvim) and [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) for LSP support.
 * [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) for syntax highlighting.
-* pre-configured LSP for Lua, Python, Rust, Zig, Elixir, C, C++, JavaScript/TypeScript, and Vue (Volar).
+* pre-configured LSP for Lua, Python, Rust, Zig, Elixir, C, C++, JavaScript/TypeScript, Haskell, Gleam, and Vue (Volar).
     * this setup uses [rustaceanvim](https://github.com/mrcjkb/rustaceanvim) for Rust instead of the LSP servers provided by Mason.
     * the Python setup uses [pyright](https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/server_configurations/pyright.lua).
 * fuzzy finding via [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim).
@@ -36,7 +36,7 @@
 
 * the default `<leader>` key is `,`
 * LSP
-    * `K` or `<shift-k>` to open hover window/documentation.
+    * `K` or `<shift-k>` to open documentation window on hover.
     * `k` or `<C-k>` to display diagnostics when hovering over an error.
 * Buffer Switching
     * navigate between window splits using `<C-h>`, `<C-j>`, `<C-k>`, and `<C-l>`
@@ -121,7 +121,7 @@ To setup autocompletion, the recommended approach is to install GHC, HLS, Cabal,
 
 ### Gleam
 
-Mason does not provide language servers for Gleam. To work with Gleam, you will need the Treesitter grammar:
+Mason does not provide language servers for [Gleam](https://gleam.run/). To work with Gleam, you will need the Treesitter grammar:
 
 ```
 :TSInstall gleam
