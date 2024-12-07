@@ -36,7 +36,8 @@
 
 * the default `<leader>` key is `,`
 * LSP
-    * `K` to open hover window/documentation.
+    * `K` or `<shift-k>` to open hover window/documentation.
+    * `k` or `<C-k>` to display diagnostics when hovering over an error.
 * Buffer Switching
     * navigate between window splits using `<C-h>`, `<C-j>`, `<C-k>`, and `<C-l>`
     * or `<leader><Up>`, `<leader><Down>`, `<leader><Left>`, and `<leader><Right>` if you like arrowkeys
