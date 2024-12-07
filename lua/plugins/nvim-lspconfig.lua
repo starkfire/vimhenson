@@ -85,7 +85,16 @@ return {
         -- Python
         require'lspconfig'.pyright.setup{
             on_attach = on_attach,
-            capabilities = capabilities
+            capabilities = capabilities,
+            settings = {
+                python = {
+                    analysis = {
+                        autoSearchPaths = true,
+                        useLibraryCodeForTypes = true,
+                        diagnosticMode = 'openFilesOnly'
+                    }
+                }
+            }
         }
 
         -- C / C++ / CUDA / ObjC / ObjCpp / Proto
