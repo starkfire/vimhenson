@@ -10,7 +10,7 @@ return {
             "zls",
             "elixirls",
             "volar",
-            "hls"
+            "jsonls"
         }
 
         require("mason").setup()
@@ -139,6 +139,12 @@ return {
 
         -- Gleam
         require'lspconfig'.gleam.setup{
+            on_attach = on_attach,
+            capabilities = capabilities,
+        }
+
+        -- JSON
+        require'lspconfig'.jsonls.setup{
             on_attach = on_attach,
             capabilities = capabilities,
         }
