@@ -1,11 +1,5 @@
 # vimhenson
 
-## Motivation
-
-* I wanted a code editor setup that already comes with almost everything I need, regardless of a project's scale.
-* a full-blown Neovim setup is still faster than VSCode and any other bulky editors.
-* I want to work fast in any environment I am in.
-
 ## Preview
 
 | Environment | Sample |
@@ -31,6 +25,13 @@
 * diagnostics with [trouble.nvim](https://github.com/folke/trouble.nvim).
 * run Git commands within the editor via [vim-fugitive](https://github.com/tpope/vim-fugitive).
 * built-in pair completion, wrapping, and single/multi-line commenting.
+
+## Requirements
+
+* [Neovim](https://neovim.io/) (>= v0.10)
+* Telescope dependencies
+    * [ripgrep](https://github.com/BurntSushi/ripgrep)
+    * [fd](https://github.com/sharkdp/fd) (optional)
 
 ## Usage
 
@@ -79,7 +80,38 @@
     * `<leader>{` to wrap in braces
     * `<leader>[` to wrap in brackets
 
-## Troubleshooting
+## LSP Configurations
+
+By default, this configuration uses the following LSP servers:
+
+* `clangd`
+* `gopls`
+* `elixirls`
+* `hls`
+* `jsonls`
+* `lua_ls`
+* `pyright`
+* `ts_ls`
+* `volar`
+* `zls`
+
+To add/remove LSP servers, see `lua/plugins/nvim-lspconfig.lua`.
+
+### Go
+
+You will need to install [Go](https://go.dev/doc/install) for `gopls` to work.
+
+### Gleam
+
+Mason does not provide language servers for [Gleam](https://gleam.run/). To work with Gleam, you will need the Treesitter grammar:
+
+```
+:TSInstall gleam
+```
+
+### Haskell
+
+To setup autocompletion, the recommended approach is to install GHC, HLS, Cabal, and Stack altogether with [ghcup](https://www.haskell.org/ghcup/).
 
 ### Rust
 
@@ -115,14 +147,3 @@ npm install -g @vue/typescript-plugin
 
 If Volar fails to run whenever Vue files are being opened, you can check out this [issue](https://github.com/vuejs/language-tools/issues/4706).
 
-### Haskell
-
-To setup autocompletion, the recommended approach is to install GHC, HLS, Cabal, and Stack altogether with [ghcup](https://www.haskell.org/ghcup/).
-
-### Gleam
-
-Mason does not provide language servers for [Gleam](https://gleam.run/). To work with Gleam, you will need the Treesitter grammar:
-
-```
-:TSInstall gleam
-```
