@@ -97,6 +97,8 @@ By default, this configuration uses the following LSP servers:
 
 To add/remove LSP servers, see `lua/plugins/nvim-lspconfig.lua`.
 
+## Troubleshooting
+
 ### Go
 
 You will need to install [Go](https://go.dev/doc/install) for `gopls` to work.
@@ -112,6 +114,10 @@ Mason does not provide language servers for [Gleam](https://gleam.run/). To work
 ### Haskell
 
 To setup autocompletion, the recommended approach is to install GHC, HLS, Cabal, and Stack altogether with [ghcup](https://www.haskell.org/ghcup/).
+
+### Python
+
+This configuration may not work well in **Windows** environments when using pyenv-win. See this [issue](https://github.com/williamboman/mason.nvim/issues/1753]).
 
 ### Rust
 
