@@ -117,6 +117,7 @@ return {
 
         -- Elixir
         require'lspconfig'.elixirls.setup{
+            filetypes = { "ex", "exs", "elixir", "eelixir", "heex", "surface" },
             on_attach = on_attach,
             capabilities = capabilities
         }
