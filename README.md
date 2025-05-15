@@ -12,7 +12,7 @@
 * [lazy.nvim](https://github.com/folke/lazy.nvim) for plugin management.
 * [mason-lspconfig](https://github.com/williamboman/mason-lspconfig.nvim) and [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) for LSP support.
 * [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) for syntax highlighting.
-* pre-configured LSP for Lua, Python, Rust, Zig, Elixir, C, C++, JavaScript/TypeScript, Haskell, Gleam, and Vue (Volar).
+* pre-configured LSP for Lua, Python, Rust, Zig, Elixir, Nim, C, C++, JavaScript/TypeScript, Haskell, Gleam, and Vue (Volar).
     * this setup uses [rustaceanvim](https://github.com/mrcjkb/rustaceanvim) for Rust instead of the LSP servers provided by Mason.
     * the Python setup uses [pyright](https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/server_configurations/pyright.lua).
 * fuzzy finding via [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim).
@@ -90,6 +90,7 @@ By default, this configuration uses the following LSP servers:
 * `hls`
 * `jsonls`
 * `lua_ls`
+* `nim_langserver`
 * `pyright`
 * `ts_ls`
 * `volar`
@@ -133,6 +134,14 @@ In this case, if you have already pre-installed Cargo and `rustc`, you need to m
 
 ```sh
 rustup component add rust-analyzer
+```
+
+### Nim
+
+You need to install `nimlangserver` using the `nimble` package manager:
+
+```sh
+nimble install nimlangserver
 ```
 
 ### Volar

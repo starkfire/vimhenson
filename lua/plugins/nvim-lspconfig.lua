@@ -9,6 +9,7 @@ return {
             "gopls",
             "zls",
             "elixirls",
+            "nim_langserver",
             "volar",
             "hls",
             "jsonls"
@@ -118,6 +119,13 @@ return {
         -- Elixir
         require'lspconfig'.elixirls.setup{
             filetypes = { "ex", "exs", "elixir", "eelixir", "heex", "surface" },
+            on_attach = on_attach,
+            capabilities = capabilities
+        }
+
+        -- Nim
+        require'lspconfig'.nim_langserver.setup{
+            filetypes = { "nim" },
             on_attach = on_attach,
             capabilities = capabilities
         }
