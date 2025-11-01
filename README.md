@@ -138,11 +138,13 @@ rustup component add rust-analyzer
 
 ### Nim
 
-You need to install `nimlangserver` using the `nimble` package manager:
+You need to install [nimlangserver](https://github.com/nim-lang/langserver) using the `nimble` package manager:
 
 ```sh
 nimble install nimlangserver
 ```
+
+In some cases, this may fail because some package repositories provide outdated versions of Nim. In this case, you may use [choosenim](https://github.com/dom96/choosenim) to install Nim.
 
 ### Volar
 
