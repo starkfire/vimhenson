@@ -25,6 +25,15 @@ return {
 
         local mason_registry = require('mason-registry')
 
+        local lsp_local_cfg = {
+            notify = true,
+            notify_level = vim.log.levels.WARN,
+            mason_name_map = {
+                lua_ls = 'lua-language-server',
+                ts_ls = 'typescript-language-server',
+            },
+        }
+
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
         local on_attach = function(_, bufnr)
@@ -67,10 +76,36 @@ return {
                 server_opts = {}
             end
 
+            -- check if the server binary is available from Mason
+            local is_installed = true
+
+            local mason_name = lsp_local_cfg.mason_name_map[name] or name
+            local ok_pkg, pkg = pcall(function()
+                return mason_registry.get_package(mason_name)
+            end)
+
+            if ok_pkg and pkg then
+                is_installed = pkg:is_installed()
+            else
+                -- as a fallback, check for an explicit cmd in the server opts, if provided
+                if server_opts.cmd and type(server_opts.cmd) == 'table' and server_opts.cmd[1] then
+                    is_installed = vim.fn.executable(server_opts.cmd[1]) == 1
+                end
+            end
+
+            if not is_installed then
+                if lsp_local_cfg.notify then
+                    vim.notify(string.format("LSP server '%s' not installed; skipping enable. Install via mason or provide a 'cmd' in lsp/%s.lua.", name, name), lsp_local_cfg.notify_level)
+                end
+                goto continue
+            end
+
             local opts = vim.tbl_deep_extend('force', { on_attach = on_attach, capabilities = capabilities }, server_opts)
 
             vim.lsp.config(name, opts)
             vim.lsp.enable(name)
+
+            ::continue::
         end
 
     end
