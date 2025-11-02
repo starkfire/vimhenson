@@ -57,7 +57,7 @@ return {
         end
 
         -- Lua
-        require'lspconfig'.lua_ls.setup{
+        vim.lsp.config('lua_ls', {
             on_init = function(client)
                 local path = client.workspace_folders[1].name
                 if vim.loop.fs_stat(path..'/.luarc.json') or vim.loop.fs_stat(path..'/.luarc.jsonc') then
@@ -81,10 +81,11 @@ return {
             settings = {
                 Lua = {}
             }
-        }
+        })
+        vim.lsp.enable('lua_ls')
 
         -- Python
-        require'lspconfig'.pyright.setup{
+        vim.lsp.config('pyright', {
             on_attach = on_attach,
             capabilities = capabilities,
             settings = {
@@ -96,44 +97,50 @@ return {
                     }
                 }
             }
-        }
+        })
+        vim.lsp.enable('pyright')
 
         -- C / C++ / CUDA / ObjC / ObjCpp / Proto
-        require'lspconfig'.clangd.setup{
+        vim.lsp.config('clangd', {
             on_attach = on_attach,
             capabilities = capabilities
-        }
+        })
+        vim.lsp.enable('clangd')
 
         -- Golang
-        require'lspconfig'.gopls.setup{
+        vim.lsp.config('gopls', {
             on_attach = on_attach,
-            capabilities = capabilities
-        }
+            capabilities = capabilities,
+        })
+        vim.lsp.enable('gopls')
 
         -- Zig
-        require'lspconfig'.zls.setup{
+        vim.lsp.config('zls', {
             on_attach = on_attach,
-            capabilities = capabilities
-        }
+            capabilities = capabilities,
+        })
+        vim.lsp.enable('zls')
 
         -- Elixir
-        require'lspconfig'.elixirls.setup{
+        vim.lsp.config('elixirls', {
             filetypes = { "ex", "exs", "elixir", "eelixir", "heex", "surface" },
             on_attach = on_attach,
-            capabilities = capabilities
-        }
+            capabilities = capabilities,
+        })
+        vim.lsp.enable('elixirls')
 
         -- Nim
-        require'lspconfig'.nim_langserver.setup{
+        vim.lsp.config('nim_langserver', {
             filetypes = { "nim" },
             on_attach = on_attach,
             capabilities = capabilities
-        }
+        })
+        vim.lsp.enable('nim_langserver')
 
         -- JS/TS + Vue Language Server
         local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() .. '/node_modules/@vue/language-server'
 
-        require'lspconfig'.ts_ls.setup{
+        vim.lsp.config('ts_ls', {
             on_attach = on_attach,
             capabilities = capabilities,
             init_options = {
@@ -154,32 +161,37 @@ return {
                 "typescript.tsx",
                 "vue"
             },
-        }
+        })
+        vim.lsp.enable('ts_ls')
 
         -- Vue
-        require'lspconfig'.volar.setup{
+        vim.lsp.config('volar', {
             on_attach = on_attach,
             capabilities = capabilities,
-        }
+        })
+        vim.lsp.enable('volar')
 
         -- Haskell
-        require'lspconfig'.hls.setup{
+        vim.lsp.config('hls', {
             on_attach = on_attach,
             capabilities = capabilities,
             filetypes = { "haskell", "lhaskell", "cabal" }
-        }
+        })
+        vim.lsp.enable('hls')
 
         -- Gleam
-        require'lspconfig'.gleam.setup{
+        vim.lsp.config('gleam', {
             on_attach = on_attach,
             capabilities = capabilities,
-        }
+        })
+        vim.lsp.enable('gleam')
 
         -- JSON
-        require'lspconfig'.jsonls.setup{
+        vim.lsp.config('jsonls', {
             on_attach = on_attach,
             capabilities = capabilities,
-        }
+        })
+        vim.lsp.enable('jsonls')
 
     end
 }
