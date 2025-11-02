@@ -63,15 +63,28 @@ return {
             update_in_insert = false
         })
         
-        vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-            vim.diagnostic.on_publish_diagnostics,
-            diagnostic_opts
-        )
+        -- set publishDiagnostics handler
+        local publish_handler = nil
+        
+        if vim.diagnostic and vim.diagnostic.on_publish_diagnostics then
+            publish_handler = vim.diagnostic.on_publish_diagnostics
+        elseif vim.lsp and vim.lsp.diagnostic and vim.lsp.diagnostic.on_publish_diagnostics then
+            publish_handler = vim.lsp.diagnostic.on_publish_diagnostics
+        end
+
+        if publish_handler then
+            vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+                publish_handler,
+                diagnostic_opts
+            )
+        else
+            vim.notify("No publishDiagnostics handler available; diagnostics may not display correctly", vim.log.levels.WARN)
+        end
 
         -- configure servers and use defaults
         for _, name in ipairs(servers) do
             local ok, server_opts = pcall(require, 'lsp.' .. name)
-            
+
             if not ok then
                 server_opts = {}
             end
