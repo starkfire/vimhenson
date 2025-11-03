@@ -15,6 +15,7 @@
 * pre-configured LSP for Lua, Python, Rust, Zig, Elixir, Nim, C, C++, JavaScript/TypeScript, Haskell, Gleam, and Vue (Volar).
     * this setup uses [rustaceanvim](https://github.com/mrcjkb/rustaceanvim) for Rust instead of the LSP servers provided by Mason.
     * the Python setup uses [pyright](https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/server_configurations/pyright.lua).
+    * you may check if you have missing prerequisites with `:checkhealth vimhenson` 
 * fuzzy finding via [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim).
 * gruvbox theme from [sainnhe/gruvbox-material](https://github.com/sainnhe/gruvbox-material).
 * status bar using [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim).
@@ -28,7 +29,7 @@
 
 ## Requirements
 
-* [Neovim](https://neovim.io/) (>= v0.10)
+* [Neovim](https://neovim.io/) (v0.11+)
 * Telescope dependencies
     * [ripgrep](https://github.com/BurntSushi/ripgrep)
     * [fd](https://github.com/sharkdp/fd) (optional)
