@@ -1,0 +1,1 @@
+pcall(require, "vimhenson.health")
