@@ -147,6 +147,14 @@ nimble install nimlangserver
 
 In some cases, this may fail because some package repositories provide outdated versions of Nim. In this case, you may use [choosenim](https://github.com/dom96/choosenim) to install Nim.
 
+### TypeScript
+
+You will need the `typescript-language-server` and `typescript` packages globally installed:
+
+```sh
+npm install -g typescript-language-server typescript
+```
+
 ### Volar
 
 By default, this configuration uses Volar's default Hybrid Mode.
