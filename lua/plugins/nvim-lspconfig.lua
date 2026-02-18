@@ -10,7 +10,8 @@ return {
             "zls",
             "elixirls",
             "nim_langserver",
-            "volar",
+            "vtsls",
+            "vue_ls",
             "hls",
             "jsonls"
         }
@@ -33,6 +34,7 @@ return {
             mason_name_map = {
                 lua_ls = 'lua-language-server',
                 ts_ls = 'typescript-language-server',
+                vue_ls = 'vue-language-server'
             },
         }
 
@@ -45,14 +47,14 @@ return {
                 if u.report_to_checkhealth ~= nil then lsp_local_cfg.report_to_checkhealth = u.report_to_checkhealth end
                 if u.notify_level ~= nil then lsp_local_cfg.notify_level = u.notify_level end
                 if type(u.mason_name_map) == 'table' then
-                    for k,v in pairs(u.mason_name_map) do lsp_local_cfg.mason_name_map[k] = v end
+                    for k, v in pairs(u.mason_name_map) do lsp_local_cfg.mason_name_map[k] = v end
                 end
             end
         end
 
         -- checkhealth warnings
         local health_warnings = {}
-        
+
         -- expose to runtime so a checkhealth provider can read it
         vim.g.vimhenson_lsp_warnings = health_warnings
 
@@ -87,7 +89,8 @@ return {
             vim.keymap.set('n', '<C-s>', vim.lsp.buf.signature_help, attach_opts)
             vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, attach_opts)
             vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, attach_opts)
-            vim.keymap.set('n', '<leader>wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, attach_opts)
+            vim.keymap.set('n', '<leader>wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
+                attach_opts)
             vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, attach_opts)
             vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, attach_opts)
             vim.keymap.set('n', 'so', require('telescope.builtin').lsp_references, attach_opts)
@@ -97,30 +100,14 @@ return {
         end
 
         -- configure the vim.diagnostic API globally
-        vim.diagnostic.config({
+        local diagnostic_opts = {
             underline = true,
             virtual_text = false,
             signs = true,
             update_in_insert = false
-        })
-        
-        -- set publishDiagnostics handler
-        local publish_handler = nil
-        
-        if vim.diagnostic and vim.diagnostic.on_publish_diagnostics then
-            publish_handler = vim.diagnostic.on_publish_diagnostics
-        elseif vim.lsp and vim.lsp.diagnostic and vim.lsp.diagnostic.on_publish_diagnostics then
-            publish_handler = vim.lsp.diagnostic.on_publish_diagnostics
-        end
+        }
 
-        if publish_handler then
-            vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-                publish_handler,
-                diagnostic_opts
-            )
-        else
-            record_or_notify("No publishDiagnostics handler available; diagnostics may not display correctly", vim.log.levels.WARN)
-        end
+        vim.diagnostic.config(diagnostic_opts)
 
         -- configure servers and use defaults
         for _, name in ipairs(servers) do
@@ -131,13 +118,13 @@ return {
                 -- handle missing lsp/*.lua configs
                 record_or_notify(
                     string.format(
-                        "Could not load config from lsp/%s.lua: %s\nUsing default configuration.", 
-                        name, 
+                        "Could not load config from lsp/%s.lua: %s\nUsing default configuration.",
+                        name,
                         tostring(server_opts):match("lsp.*") or server_opts
-                    ), 
+                    ),
                     lsp_local_cfg.notify_level
                 )
-                
+
                 server_opts = {}
             elseif type(server_opts) ~= 'table' then
                 -- handle non-table outputs
@@ -146,18 +133,18 @@ return {
                         "Config file lsp/%s.lua must return a table, got %s\nUsing default configuration.",
                         name,
                         type(server_opts)
-                    ), 
+                    ),
                     lsp_local_cfg.notify_level
                 )
-                
+
                 server_opts = {}
             elseif vim.tbl_isempty(server_opts) then
                 -- handle empty table outputs
                 record_or_notify(
                     string.format(
-                        "Config file lsp/%s.lua returned empty table\nUsing default configuration.", 
+                        "Config file lsp/%s.lua returned empty table\nUsing default configuration.",
                         name
-                    ), 
+                    ),
                     vim.log.levels.INFO
                 )
             end
@@ -206,19 +193,22 @@ return {
                 goto continue
             end
 
-            record_or_notify(string.format("Found LSP server '%s' (%s installation)", name, installation_source), vim.log.levels.INFO)
+            record_or_notify(string.format("Found LSP server '%s' (%s installation)", name, installation_source),
+                vim.log.levels.INFO)
 
             -- safely merge configurations
             local ok_merge, opts = pcall(vim.tbl_deep_extend, 'force',
-                { 
-                    on_attach = on_attach, 
-                    capabilities = capabilities 
-                }, 
+                {
+                    on_attach = on_attach,
+                    capabilities = capabilities
+                },
                 server_opts
             )
 
             if not ok_merge then
-                record_or_notify(string.format("Failed to merge LSP configs for '%s': %s\nUsing default configuration.", name, opts), lsp_local_cfg.notify_level)
+                record_or_notify(
+                    string.format("Failed to merge LSP configs for '%s': %s\nUsing default configuration.", name, opts),
+                    lsp_local_cfg.notify_level)
                 opts = {
                     on_attach = on_attach,
                     capabilities = capabilities
@@ -236,7 +226,8 @@ return {
             if not ok_enable then
                 record_or_notify(string.format("Failed to enable LSP server '%s'", name), lsp_local_cfg.notify_level)
             else
-                record_or_notify(string.format("Successfully configured and enabled LSP server '%s'", name), vim.log.levels.INFO)
+                record_or_notify(string.format("Successfully configured and enabled LSP server '%s'", name),
+                    vim.log.levels.INFO)
             end
 
             ::continue::

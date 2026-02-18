@@ -12,6 +12,7 @@ return {
         "selene.yml",
         ".git"
     },
+    --[[
     settings = {
         Lua = {}
     },
@@ -46,5 +47,6 @@ return {
                 }
             }
         )
-    end 
+    end
+    ]]--
 }
