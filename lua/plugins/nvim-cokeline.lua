@@ -1,7 +1,7 @@
 return {
     "willothy/nvim-cokeline",
     opts = function()
-        require("modules.util")
+        require("modules.utils")
 
         local colors = require("config.colors")
         local gruvbox = colors.gruvbox_original_hard

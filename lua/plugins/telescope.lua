@@ -1,6 +1,9 @@
 return {
     "nvim-telescope/telescope.nvim",
     lazy = false,
+    dependencies = {
+        { "nvim-telescope/telescope-fzf-native.nvim", build = "make" }
+    },
     opts = function()
         local telescope_path = vim.fn.stdpath("data") .. "/lazy/telescope.nvim"
 

@@ -1,20 +1,16 @@
-local o = vim.opt
+local opt         = vim.opt
 
-o.updatetime        = 300
-o.signcolumn        = "yes"
-o.shiftwidth        = 4
-o.tabstop           = 4
-o.softtabstop       = 4
-o.expandtab         = true
-o.showcmd           = true
-o.number            = true
-o.ignorecase        = true
-o.smartcase         = true
+opt.updatetime    = 300
+opt.signcolumn    = "yes"
+opt.shiftwidth    = 4
+opt.tabstop       = 4
+opt.softtabstop   = 4
+opt.expandtab     = true
+opt.showcmd       = true
+opt.number        = true
+opt.ignorecase    = true
+opt.smartcase     = true
 
-o.wrap              = true
-o.background        = "dark"
-o.termguicolors     = true
-
--- some servers have issues with backup files (coc.nvim #649)
-o.backup            = false
-o.writebackup       = false
+opt.wrap          = true
+opt.background    = "dark"
+opt.termguicolors = true

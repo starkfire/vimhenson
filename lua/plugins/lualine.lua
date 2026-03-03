@@ -2,23 +2,24 @@ return {
     "nvim-lualine/lualine.nvim",
     opts = function()
         local configuration = vim.fn['gruvbox_material#get_configuration']()
-        local palette = vim.fn['gruvbox_material#get_palette'](configuration.background, configuration.foreground, configuration.colors_override)
+        local palette = vim.fn['gruvbox_material#get_palette'](configuration.background, configuration.foreground,
+            configuration.colors_override)
 
         local colors = {
-            bg          = '#202328',
-            fg          = '#bbc2cf',
-            yellow      = '#ecbe7b',
-            blue        = '#51afef',
-            cyan        = '#008080',
-            darkblue    = '#081633',
-            green       = '#98be65',
-            orange      = '#ff8800',
-            black       = '#080808',
-            white       = '#c6c6c6',
-            red         = '#ec5f67',
-            violet      = '#a9a1e1',
-            magenta     = '#c678dd',
-            grey        = '#303030'
+            bg       = '#202328',
+            fg       = '#bbc2cf',
+            yellow   = '#ecbe7b',
+            blue     = '#51afef',
+            cyan     = '#008080',
+            darkblue = '#081633',
+            green    = '#98be65',
+            orange   = '#ff8800',
+            black    = '#080808',
+            white    = '#c6c6c6',
+            red      = '#ec5f67',
+            violet   = '#a9a1e1',
+            magenta  = '#c678dd',
+            grey     = '#303030'
         }
 
         local conditions = {
