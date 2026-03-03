@@ -2,7 +2,8 @@ return {
     "nvim-telescope/telescope.nvim",
     lazy = false,
     dependencies = {
-        { "nvim-telescope/telescope-fzf-native.nvim", build = "make" }
+        { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+        "nvim-telescope/telescope-file-browser.nvim"
     },
     opts = function()
         local telescope_path = vim.fn.stdpath("data") .. "/lazy/telescope.nvim"
@@ -28,6 +29,11 @@ return {
             vim.keymap.set('n', '<leader>gc', builtin.git_commits, {})
             vim.keymap.set('n', '<leader>gb', builtin.git_branches, {})
             vim.keymap.set('n', '<leader>gs', builtin.git_status, {})
+
+            -- file browser
+            vim.keymap.set('n', '<leader>fe', function()
+                require("telescope").extensions.file_browser.file_browser()
+            end)
         end
 
         return {
