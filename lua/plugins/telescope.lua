@@ -30,6 +30,9 @@ return {
             vim.keymap.set('n', '<leader>gb', builtin.git_branches, {})
             vim.keymap.set('n', '<leader>gs', builtin.git_status, {})
 
+            -- command palette
+            vim.keymap.set('n', '<leader>fp', builtin.commands, {})
+
             -- file browser
             vim.keymap.set('n', '<leader>fe', function()
                 require("telescope").extensions.file_browser.file_browser()
