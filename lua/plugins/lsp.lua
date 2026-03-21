@@ -3,6 +3,26 @@ return {
         "mason-org/mason-lspconfig.nvim",
         lazy = false,
         init = function()
+            local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+            vim.lsp.config("lua_ls", {
+                capabilities = capabilities,
+                settings = {
+                    Lua = {
+                        diagnostics = {
+                            globals = { "vim" },
+                        },
+                        workspace = {
+                            library = vim.api.nvim_get_runtime_file("", true),
+                            checkThirdParty = false,
+                        },
+                        telemetry = {
+                            enable = false,
+                        },
+                    },
+                },
+            })
+
             vim.diagnostic.config({
                 underline = true,
                 virtual_text = false,
@@ -47,32 +67,21 @@ return {
             "neovim/nvim-lspconfig",
             "hrsh7th/cmp-nvim-lsp",
         },
-        -- event = { "BufReadPre", "BufNewFile" },
-        opts = function()
-            local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-            return {
-                capabilities = capabilities,
-                ensure_installed = {
-                    "lua_ls",
-                    "pyright",
-                    "clangd",
-                    "ts_ls",
-                    "gopls",
-                    "zls",
-                    "elixirls",
-                    "nim_langserver",
-                    "jsonls"
-                },
-                handlers = {
-                    function(server_name)
-                        require("lspconfig")[server_name].setup({
-                            capabilities = capabilities,
-                        })
-                    end,
-                    rust_analyzer = function() end,
-                },
-            }
-        end,
+        opts = {
+            ensure_installed = {
+                "lua_ls",
+                "pyright",
+                "clangd",
+                "ts_ls",
+                "gopls",
+                "zls",
+                "elixirls",
+                "nim_langserver",
+                "jsonls"
+            },
+            automatic_enable = {
+                exclude = { "rust_analyzer" },
+            },
+        },
     },
 }
