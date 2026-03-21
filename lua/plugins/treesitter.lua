@@ -5,12 +5,24 @@ return {
         return {
             ensure_installed = {
                 "c",
+                "go",
+                "html",
                 "lua",
+                "luadoc",
+                "luap",
                 "vim",
                 "vimdoc",
                 "query",
                 "markdown",
-                "markdown_inline"
+                "markdown_inline",
+                "javascript",
+                "typescript",
+                "tsx",
+                "jsdoc",
+                "python",
+                "rust",
+                "xml",
+                "yaml"
             },
             sync_install = false,
             auto_install = false,
@@ -25,6 +37,12 @@ return {
                 end,
                 additional_vim_regex_highlighting = false,
             },
+            indent = {
+                enable = true
+            },
+            folds = {
+                enable = true
+            }
         }
     end
 }
