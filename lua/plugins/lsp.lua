@@ -53,25 +53,25 @@ return {
 
             return {
                 capabilities = capabilities,
-            ensure_installed = {
-                "lua_ls",
-                "pyright",
-                "clangd",
-                "ts_ls",
-                "gopls",
-                "zls",
-                "elixirls",
-                "nim_langserver",
-                "jsonls"
-            },
-            handlers = {
-                function(server_name)
-                    require("lspconfig")[server_name].setup({
-                        capabilities = capabilities,
-                    })
-                end,
-                rust_analyzer = function() end,
-            },
+                ensure_installed = {
+                    "lua_ls",
+                    "pyright",
+                    "clangd",
+                    "ts_ls",
+                    "gopls",
+                    "zls",
+                    "elixirls",
+                    "nim_langserver",
+                    "jsonls"
+                },
+                handlers = {
+                    function(server_name)
+                        require("lspconfig")[server_name].setup({
+                            capabilities = capabilities,
+                        })
+                    end,
+                    rust_analyzer = function() end,
+                },
             }
         end,
     },
