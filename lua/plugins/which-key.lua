@@ -11,6 +11,7 @@ return {
     opts = {
         preset = "modern",
         delay = 300,
+        triggers = {},
     },
     config = function(_, opts)
         local wk = require("which-key")
