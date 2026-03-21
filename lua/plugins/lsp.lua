@@ -18,6 +18,7 @@ return {
 
                     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, attach_opts)
                     vim.keymap.set("n", "gd", vim.lsp.buf.definition, attach_opts)
+                    vim.keymap.set("n", "grr", vim.lsp.buf.references, attach_opts)
                     vim.keymap.set("n", "K", vim.lsp.buf.hover, attach_opts)
                     vim.keymap.set("n", "gi", vim.lsp.buf.implementation, attach_opts)
                     vim.keymap.set("n", "<C-s>", vim.lsp.buf.signature_help, attach_opts)
@@ -28,6 +29,8 @@ return {
                     end, attach_opts)
                     vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, attach_opts)
                     vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, attach_opts)
+                    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, attach_opts)
+
                     vim.keymap.set("n", "so", function()
                         require("telescope.builtin").lsp_references()
                     end, attach_opts)
@@ -41,10 +44,15 @@ return {
         end,
         dependencies = {
             { "mason-org/mason.nvim", opts = {} },
-            "neovim/nvim-lspconfig"
+            "neovim/nvim-lspconfig",
+            "hrsh7th/cmp-nvim-lsp",
         },
         -- event = { "BufReadPre", "BufNewFile" },
-        opts = {
+        opts = function()
+            local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+            return {
+                capabilities = capabilities,
             ensure_installed = {
                 "lua_ls",
                 "pyright",
@@ -58,10 +66,13 @@ return {
             },
             handlers = {
                 function(server_name)
-                    require("lspconfig")[server_name].setup({})
+                    require("lspconfig")[server_name].setup({
+                        capabilities = capabilities,
+                    })
                 end,
                 rust_analyzer = function() end,
             },
-        },
+            }
+        end,
     },
 }
