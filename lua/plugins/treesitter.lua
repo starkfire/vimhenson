@@ -1,5 +1,6 @@
 return {
     "nvim-treesitter/nvim-treesitter",
+    branch = "master",
     build = ":TSUpdate",
     opts = function()
         return {
@@ -40,10 +41,18 @@ return {
             indent = {
                 enable = true
             },
-            folds = {
-                enable = true
-            }
+            incremental_selection = {
+                enable = true,
+                keymaps = {
+                    init_selection = "<leader>ss", -- start selection
+                    node_incremental = "<leader>si", -- increment
+                    scope_incremental = "<leader>sc", -- scope
+                    node_decremental = "<leader>sd", -- decrement
+                },
+            },
         }
+    end,
+    config = function(_, opts)
+        require("nvim-treesitter.configs").setup(opts)
     end
 }
-
