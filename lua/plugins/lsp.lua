@@ -52,6 +52,12 @@ return {
                 capabilities = capabilities,
             })
 
+            -- Gleam
+            vim.lsp.config("gleam", {
+                capabilities = capabilities,
+            })
+            vim.lsp.enable("gleam")
+
             vim.diagnostic.config({
                 underline = true,
                 virtual_text = false,
