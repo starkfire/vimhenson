@@ -112,6 +112,7 @@ return {
                 "zls",
                 "elixirls",
                 "nim_langserver",
+                "hls",
                 "jsonls",
                 "vue_ls"
             },
