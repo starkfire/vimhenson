@@ -23,6 +23,35 @@ return {
                 },
             })
 
+            -- TypeScript (+ Vue)
+            local vue_ls_path = vim.fn.stdpath("data")
+                .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
+
+            vim.lsp.config("ts_ls", {
+                capabilities = capabilities,
+                init_options = {
+                    plugins = {
+                        {
+                            name = "@vue/typescript-plugin",
+                            location = vue_ls_path,
+                            languages = { "javascript", "typescript", "vue" },
+                        },
+                    },
+                },
+                filetypes = {
+                    "javascript",
+                    "javascriptreact",
+                    "typescript",
+                    "typescriptreact",
+                    "vue",
+                },
+            })
+
+            -- Vue
+            vim.lsp.config("vue_ls", {
+                capabilities = capabilities,
+            })
+
             vim.diagnostic.config({
                 underline = true,
                 virtual_text = false,
@@ -77,7 +106,8 @@ return {
                 "zls",
                 "elixirls",
                 "nim_langserver",
-                "jsonls"
+                "jsonls",
+                "vue_ls"
             },
             automatic_enable = {
                 exclude = { "rust_analyzer" },
