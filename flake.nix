@@ -283,7 +283,10 @@
                 }
         );
 
-        packages = forAllSystems mkPackages;
+        packages = forAllSystems (system: {
+            default = (mkPackages system).default;
+            vimhenson = (mkPackages system).vimhenson;
+        });
 
         apps = forAllSystems (system: {
             default = {
