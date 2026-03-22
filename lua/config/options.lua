@@ -14,3 +14,10 @@ opt.smartcase     = true
 opt.wrap          = true
 opt.background    = "dark"
 opt.termguicolors = true
+
+-- Treesitter (folding)
+opt.foldmethod    = "expr"
+opt.foldexpr      = "v:lua.vim.treesitter.foldexpr()"
+opt.foldlevel     = 99
+opt.foldlevelstart = 99
+opt.foldenable    = true
