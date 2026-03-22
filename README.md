@@ -78,6 +78,8 @@ See `lua/plugins/lsp.lua` to modify the default servers.
 
 **Gleam** integration is provided directly through [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) as Mason does not manage it.
 
+**Haskell** integration is provided via [haskell-tools](https://github.com/mrcjkb/haskell-tools.nvim).
+
 ### UI and Navigation
 
 * Toggle keymap guides with [which-key.nvim](https://github.com/folke/which-key.nvim)
@@ -152,16 +154,16 @@ See `lua/plugins/lsp.lua` to modify the default servers.
 ### Syntax Highlighting
 
 See `lua/plugins/treesitter.lua`:
-    * default parsers:
-        * `c`
-        * `lua`
-        * `vim`
-        * `vimdoc`
-        * `query`
-        * `markdown`
-        * `markdown_inline`
-    * automatic parser installation is disabled
-    * highlighting is enabled by default, but will be disabled for files larger than 100 KB
+* default parsers:
+    * `c`
+    * `lua`
+    * `vim`
+    * `vimdoc`
+    * `query`
+    * `markdown`
+    * `markdown_inline`
+* automatic parser installation is disabled
+* highlighting is enabled by default, but will be disabled for files larger than 100 KB
 
 ### Completion
 
