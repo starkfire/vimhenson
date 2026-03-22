@@ -112,12 +112,11 @@ return {
                 "zls",
                 "elixirls",
                 "nim_langserver",
-                "hls",
                 "jsonls",
                 "vue_ls"
             },
             automatic_enable = {
-                exclude = { "rust_analyzer" },
+                exclude = { "rust_analyzer", "hls" },
             },
         },
     },
