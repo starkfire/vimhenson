@@ -1,7 +1,38 @@
 local is_nix = vim.env.VIMHENSON_NIX == "1"
 
+local nix_plugin_name_map = {
+    luasnip = "LuaSnip",
+}
+
+local spec = {
+    { import = "plugins" },
+}
+
+-- change root path to Lazy depending on whether it runs on Nix or not
+local lazy_root = is_nix
+    and (vim.fn.stdpath("state") .. "/lazy-nix")
+    or (vim.fn.stdpath("data") .. "/lazy")
+
+-- Nix
+-- on Nix: Lazy will only act as a loader and plugin management needs to be done within flake.nix
+if is_nix then
+    local packaged_plugins = vim.fn.globpath(vim.o.packpath, "pack/*/start/*", false, true)
+
+    for _, path in ipairs(packaged_plugins) do
+        local basename = vim.fn.fnamemodify(path, ":t")
+        local name = nix_plugin_name_map[basename] or basename
+        
+        table.insert(spec, 1, {
+            name = name,
+            dir = vim.fn.resolve(path),
+        })
+    end
+end
+
+-- default
+-- on local/default install: we just install Lazy in the default manner
 if not is_nix then
-    local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+    local lazypath = lazy_root .. "/lazy.nvim"
 
     if not (vim.uv or vim.loop).fs_stat(lazypath) then
         local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -30,9 +61,8 @@ if not is_nix then
 end
 
 require("lazy").setup({
-    spec = {
-        { import = "plugins" },
-    },
+    root = lazy_root,
+    spec = spec,
     install = {
         missing = not is_nix,
     },
