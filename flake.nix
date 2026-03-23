@@ -222,7 +222,7 @@
                                 !(base == ".git" || base == ".nvimlog" || base == "result");
                     };
 
-                    vimhenson = pkgs.wrapNeovim pkgs.neovim-unwrapped {
+                    wrappedNeovim = pkgs.wrapNeovim pkgs.neovim-unwrapped {
                         viAlias = true;
                         vimAlias = true;
 
@@ -235,18 +235,35 @@
                             "PATH"
                             ":"
                             (lib.makeBinPath runtimePackages)
+                            # export a variable to indicate if this project runs on Nix
+                            "--set"
+                            "VIMHENSON_NIX"
+                            "1"
+                            # (Vue) export paths to vue language server and typescript plugin
                             "--set"
                             "VUE_LANGUAGE_SERVER_LIB_PATH"
                             "${pkgs.vue-language-server}/lib/language-tools"
+                            "--set"
+                            "VIMHENSON_VUE_TS_PLUGIN_PATH"
+                            "${pkgs.vue-language-server}/lib/language-tools/packages/typescript-plugin"
                         ];
 
                         configure = {
                             customLuaRC = ''
+                                vim.opt.runtimepath:prepend("${pkgs.vimPlugins.lazy-nvim}")
                                 vim.opt.runtimepath:prepend("${configDir}")
                                 dofile("${configDir}/init.lua")
                             '';
                             packages.vimhenson.start = pluginPackages ++ [ treesitterPlugins ];
                         };
+                    };
+
+                    vimhenson = pkgs.symlinkJoin {
+                        name = "vimhenson";
+                        paths = [ wrappedNeovim ];
+                        postBuild = ''
+                            ln -s $out/bin/nvim $out/bin/vimhenson
+                        '';
                     };
     in
     {
