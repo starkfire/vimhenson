@@ -1,3 +1,5 @@
+local is_nix = vim.env.VIMHENSON_NIX == "1"
+
 return {
     "nvim-treesitter/nvim-treesitter",
     branch = "master",
@@ -53,6 +55,11 @@ return {
         }
     end,
     config = function(_, opts)
-        require("nvim-treesitter.configs").setup(opts)
+        -- nvim-treesitter needs to be loaded differently within Nix
+        if is_nix then
+            require("nvim-treesitter").setup(opts)
+        else
+            require("nvim-treesitter.configs").setup(opts)
+        end
     end
 }
