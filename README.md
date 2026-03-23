@@ -38,11 +38,42 @@
 * Treesitter
     * [tree-sitter-cli](https://www.npmjs.com/package/tree-sitter-cli)
 
+## Install
+
+### Default (Recommended)
+
+The default way to set up this project would be to use this as your Neovim config:
+
+```sh
+cd ~/.config
+git clone https://github.com/starkfire/vimhenson nvim
+```
+
+### Nix
+
+Alternatively, you may clone this project and run it on top of Nix:
+
+```sh
+git clone https://github.com/starkfire/vimhenson
+cd vimhenson
+
+nix develop
+# or...
+nix build #.default
+./result/bin/vimhenson
+```
+
+### Default vs. Nix
+
+The **default** setup assumes that you either already have all the prerequisites or you will handle the rest of the setup on your own.
+
+The **Nix** setup delegates the plugin management to `flake.nix` and Lazy only acts as a loader. Some Treesitter features like incremental selection may not work in the Nix setup as there is currently no Nix package that lets us use Treesitter's older `master` branch (which this project still currently uses).
+
 ## Structure
 
+* `init.lua`: top-level entrypoint
 * `lua/config/init.lua` for options and global keymaps
 * `lua/config/lazy.lua` for bootstrapping `lazy.nvim` and loading all plugin specs from `lua/plugins`
-* `init.lua`: top-level entrypoint
 * `lua/config/options.lua`: general editor options
 * `lua/config/keymaps.lua`: non-plugin global keymaps
 * `lua/config/lazy.lua`: lazy.nvim bootstrap and setup
