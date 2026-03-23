@@ -63,11 +63,11 @@ nix build #.default
 ./result/bin/vimhenson
 ```
 
-### Default vs. Nix
+**Additional Notes:**
 
-The **default** setup assumes that you either already have all the prerequisites or you will handle the rest of the setup on your own.
-
-The **Nix** setup delegates the plugin management to `flake.nix` and Lazy only acts as a loader. Some Treesitter features like incremental selection may not work in the Nix setup as there is currently no Nix package that lets us use Treesitter's older `master` branch (which this project still currently uses).
+* on Nix, Lazy no longer handles plugin management. Plugins must be managed in `flake.nix`.
+* Mason is also not available on Nix mode and nvim-lspconfig is directly called. LSP packages must be managed in `flake.nix`.
+* Treesitter features like incremental selection may not work as there is currently no Nix package that lets us use Treesitter's older `master` branch (which this project still currently uses).
 
 ## Structure
 
