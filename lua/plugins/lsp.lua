@@ -84,6 +84,24 @@ local function configure_lsp()
         capabilities = capabilities,
     })
 
+    vim.lsp.config("nim_langserver", {
+        settings = {
+            nim = {
+                inlayHints = {
+                    typeHints = true,
+                    parameterHints = true,
+                    exceptionHints = true
+                }
+            }
+        },
+        on_attach = function(client, bufnr)
+            if client.server_capabilities.inlayHintProvider then
+                vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+            end
+        end,
+        capabilities = capabilities
+    })
+
     if is_nix then
         for _, server in ipairs({
             "lua_ls",
