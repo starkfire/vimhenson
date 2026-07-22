@@ -3,14 +3,15 @@ local function prepend_path(path)
         return
     end
 
+    local path_sep = package.config:sub(1, 1) == "\\" and ";" or ":"
     local current_path = vim.env.PATH or ""
-    for entry in string.gmatch(current_path, "([^:]+)") do
+    for entry in string.gmatch(current_path, "([^" .. path_sep .. "]+)") do
         if entry == path then
             return
         end
     end
 
-    vim.env.PATH = path .. ":" .. current_path
+    vim.env.PATH = path .. path_sep .. current_path
 end
 
 -- link `asdf`
