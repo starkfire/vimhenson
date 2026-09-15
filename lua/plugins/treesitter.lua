@@ -1,65 +1,59 @@
 local is_nix = vim.env.VIMHENSON_NIX == "1"
 
+local parsers = {
+    "bash",
+    "c",
+    "go",
+    "html",
+    "lua",
+    "luadoc",
+    "luap",
+    "vim",
+    "vimdoc",
+    "query",
+    "markdown",
+    "markdown_inline",
+    "javascript",
+    "typescript",
+    "tsx",
+    "jsdoc",
+    "python",
+    "rust",
+    "xml",
+    "yaml",
+}
+
+-- Incremental selection (`an`/`in`/`]n`/`[n`/`]N`/`[N`) is a Neovim core
+-- default (runtime/lua/vim/_core/defaults.lua, vim.treesitter._select) as of
+-- v0.12 — no plugin config needed; nvim-treesitter's `main` branch dropped
+-- its own `incremental_selection` module in favor of this.
+
 return {
     "nvim-treesitter/nvim-treesitter",
-    branch = "master",
+    branch = "main",
     build = ":TSUpdate",
-    opts = function()
-        return {
-            ensure_installed = {
-                "c",
-                "go",
-                "html",
-                "lua",
-                "luadoc",
-                "luap",
-                "vim",
-                "vimdoc",
-                "query",
-                "markdown",
-                "markdown_inline",
-                "javascript",
-                "typescript",
-                "tsx",
-                "jsdoc",
-                "python",
-                "rust",
-                "xml",
-                "yaml"
-            },
-            sync_install = false,
-            auto_install = false,
-            highlight = {
-                enable = true,
-                disable = function(_, buf)
-                    local max_filesize = 100 * 1024
-                    local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-                    if ok and stats and stats.size > max_filesize then
-                        return true
-                    end
-                end,
-                additional_vim_regex_highlighting = false,
-            },
-            indent = {
-                enable = true
-            },
-            incremental_selection = {
-                enable = true,
-                keymaps = {
-                    init_selection = "<leader>ss", -- start selection
-                    node_incremental = "<leader>si", -- increment
-                    scope_incremental = "<leader>sc", -- scope
-                    node_decremental = "<leader>sd", -- decrement
-                },
-            },
-        }
-    end,
-    config = function(_, opts)
-        -- nvim-treesitter needs to be loaded differently within Nix
-        if is_nix then
-            require("nvim-treesitter").setup(opts)
-        else
-            require("nvim-treesitter.configs").setup(opts)
+    lazy = false,
+    config = function()
+        require("nvim-treesitter").setup({})
+
+        if not is_nix then
+            require("nvim-treesitter").install(parsers)
         end
-    end
+
+        vim.api.nvim_create_autocmd("FileType", {
+            pattern = "*",
+            callback = function(args)
+                local max_filesize = 100 * 1024
+                local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(args.buf))
+                if ok and stats and stats.size > max_filesize then
+                    return
+                end
+
+                pcall(vim.treesitter.start, args.buf)
+                pcall(function()
+                    vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+                end)
+            end,
+        })
+    end,
 }

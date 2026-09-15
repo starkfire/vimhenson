@@ -67,7 +67,6 @@ nix build #.default
 
 * on Nix, Lazy no longer handles plugin management. Plugins must be managed in `flake.nix`.
 * Mason is also not available on Nix mode and nvim-lspconfig is directly called. LSP packages must be managed in `flake.nix`.
-* Treesitter features like incremental selection may not work as there is currently no Nix package that lets us use Treesitter's older `master` branch (which this project still currently uses).
 
 ## Structure
 
@@ -140,11 +139,10 @@ See `lua/plugins/lsp.lua` to modify the default servers.
     * `<leader>tf` for floating terminal
     * `<leader>th` for horizontal terminal
     * `<leader>tv` for vertical terminal
-* Incremental Selection (Treesitter)
-    * `<leader>ss` to start selection
-    * `<leader>si` to increment selection (`node_incremental`)
-    * `<leader>sc` to increment selection (`scope_incremental`)
-    * `<leader>sd` to decrement selection (`node_decremental`)
+* Incremental Selection
+    * `an` / `in` (visual/operator-pending) select parent/child node
+    * `]n` / `[n` (visual) select next/previous node
+    * `]N` / `[N` (visual) select next/previous sibling node
 * Folding (Treesitter)
     * `zR` to open all folds
     * `zM` to close all folds
