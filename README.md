@@ -82,6 +82,7 @@ By default, this uses [mason-lspconfig](https://github.com/mason-org/mason-lspco
 * `nim_langserver`
 * `ty`
 * `ts_ls`
+* `vue_ls`
 * `zls`
 
 See `lua/plugins/lsp.lua` to modify the default servers.
@@ -166,13 +167,26 @@ See `lua/plugins/lsp.lua` to modify the default servers.
 
 See `lua/plugins/treesitter.lua`:
 * default parsers:
+    * `bash`
     * `c`
+    * `go`
+    * `html`
+    * `javascript`
+    * `jsdoc`
     * `lua`
+    * `luadoc`
+    * `luap`
+    * `python`
+    * `rust`
     * `vim`
     * `vimdoc`
     * `query`
     * `markdown`
     * `markdown_inline`
+    * `tsx`
+    * `typescript`
+    * `xml`
+    * `yaml`
 * automatic parser installation is disabled
 * highlighting is enabled by default, but will be disabled for files larger than 100 KB
 
