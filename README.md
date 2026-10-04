@@ -1,5 +1,13 @@
 # vimhenson
 
+## Preface
+
+* I needed an editor that:
+    * I can control and customize (obviously)
+    * is light and fast (Zed is also really fast - I use it frequently, but there are many cases where I need to actually _work_ faster)
+    * does not come with agentic capabilities and AI tools
+    * can run anywhere as long as there is a terminal (bonus point: also useful when I have to work through a remote shell)
+
 ## Preview
 
 | Environment | Sample |
@@ -257,8 +265,4 @@ See `lua/plugins/treesitter.lua`:
 * `<leader>hd` for diff against staged/last commit
 * `<leader>hD` for diff relative to parent commit
 * `<leader>td` to toggle visibility for deleted lines
-
-## Notes
-
-* the configured version of Treesitter in this project uses the `master` branch.
 
