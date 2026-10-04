@@ -49,25 +49,6 @@ cd ~/.config
 git clone https://github.com/starkfire/vimhenson nvim
 ```
 
-### Nix
-
-Alternatively, you may clone this project and run it on top of Nix:
-
-```sh
-git clone https://github.com/starkfire/vimhenson
-cd vimhenson
-
-nix develop
-# or...
-nix build #.default
-./result/bin/vimhenson
-```
-
-**Additional Notes:**
-
-* on Nix, Lazy no longer handles plugin management. Plugins must be managed in `flake.nix`.
-* Mason is also not available on Nix mode and nvim-lspconfig is directly called. LSP packages must be managed in `flake.nix`.
-
 ## Structure
 
 * `init.lua`: top-level entrypoint

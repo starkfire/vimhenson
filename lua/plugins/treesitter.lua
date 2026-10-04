@@ -1,5 +1,3 @@
-local is_nix = vim.env.VIMHENSON_NIX == "1"
-
 local parsers = {
     "bash",
     "c",
@@ -36,9 +34,7 @@ return {
     config = function()
         require("nvim-treesitter").setup({})
 
-        if not is_nix then
-            require("nvim-treesitter").install(parsers)
-        end
+        require("nvim-treesitter").install(parsers)
 
         vim.api.nvim_create_autocmd("FileType", {
             pattern = "*",

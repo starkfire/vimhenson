@@ -1,25 +1,10 @@
--- check if this project runs on top of Nix
-local is_nix = vim.env.VIMHENSON_NIX == "1"
-
--- helper function to determine the path to Vue Language Server
--- depending on whether this project runs with/without Nix.
--- see `flake.nix` which exports `VIMHENSON_VUE_TS_PLUGIN_PATH`
--- and `VUE_LANGUAGE_SERVER_LIB_PATH`
+-- helper function to determine the path to Vue Language Server (installed via Mason)
 local function get_vue_ts_plugin_path()
-    local packaged_path = vim.env.VIMHENSON_VUE_TS_PLUGIN_PATH
-    if packaged_path and packaged_path ~= "" then
-        return packaged_path
-    end
-
     local mason_path = vim.fn.stdpath("data")
         .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
 
     if vim.fn.isdirectory(mason_path) == 1 then
         return mason_path
-    end
-
-    if vim.env.VUE_LANGUAGE_SERVER_LIB_PATH and vim.env.VUE_LANGUAGE_SERVER_LIB_PATH ~= "" then
-        return vim.env.VUE_LANGUAGE_SERVER_LIB_PATH
     end
 
     return nil
@@ -102,26 +87,7 @@ local function configure_lsp()
         capabilities = capabilities
     })
 
-    if is_nix then
-        for _, server in ipairs({
-            "lua_ls",
-            "pyright",
-            "clangd",
-            "ts_ls",
-            "gopls",
-            "zls",
-            "elixirls",
-            "nim_langserver",
-            "jsonls",
-            "vue_ls",
-            "nil_ls",
-            "gleam",
-        }) do
-            vim.lsp.enable(server)
-        end
-    else
-        vim.lsp.enable("gleam")
-    end
+    vim.lsp.enable("gleam")
 
     vim.diagnostic.config({
         underline = true,
@@ -164,21 +130,6 @@ local function configure_lsp()
 
 end
 
--- Nix (does not use Mason)
-if is_nix then
-    return {
-        {
-            "neovim/nvim-lspconfig",
-            lazy = false,
-            init = configure_lsp,
-            dependencies = {
-                "hrsh7th/cmp-nvim-lsp",
-            },
-        },
-    }
-end
-
--- local
 return {
     {
         "mason-org/mason-lspconfig.nvim",
