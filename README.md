@@ -31,12 +31,13 @@
 
 ## Requirements
 
-* [Neovim](https://neovim.io/) (v0.11)
+* [Neovim](https://neovim.io/) (v0.12)
 * Telescope dependencies
     * [ripgrep](https://github.com/BurntSushi/ripgrep)
     * [fd](https://github.com/sharkdp/fd) (optional)
 * Treesitter
     * [tree-sitter-cli](https://www.npmjs.com/package/tree-sitter-cli)
+* rustc (>=1.96.x)
 
 ## Install
 
@@ -79,7 +80,7 @@ By default, this uses [mason-lspconfig](https://github.com/mason-org/mason-lspco
 * `jsonls`
 * `lua_ls`
 * `nim_langserver`
-* `pyright`
+* `ty`
 * `ts_ls`
 * `zls`
 
